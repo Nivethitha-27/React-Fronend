@@ -3,14 +3,14 @@ import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom"
 import Adminnav from '../components/Adminnav';
-import Api from '../../Api';
+import Api from '../Api'
 
 function Adminuser() {
 
     const [user, setuser] = React.useState([]);
 
     useEffect(() => {
-        fetch(`${Api}/user/find`)
+        fetch("https://trainexpress.herokuapp.com/user/find")
             .then((res) => res.json())
             .then((data) => {
                 setuser(data);

@@ -6,7 +6,7 @@ import axios from "axios";
 
 import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
-import Api from '../../Api';
+import Api from '../Api'
 import Adminlogo from "../components/Adminlogo";
 
 
@@ -59,7 +59,7 @@ export default function SignUpPage() {
                                             };
 
                                             try {
-                                                const url = `${Api}/register`
+                                                const url = "https://trainexpress.herokuapp.com/register";
                                                 const { data } = await axios.post(url, values);
 
                                                 // window.localStorage.setItem("accessToken", data);

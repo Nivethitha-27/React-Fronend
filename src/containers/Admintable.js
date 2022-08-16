@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom"
 import axios from 'axios'
 import Adminnav from '../components/Adminnav';
 import { useParams } from 'react-router-dom';
-import Api from '../../Api';
+import Api from '../Api'
 function Admintable() {
 
   const navigate = useNavigate();
@@ -15,7 +15,7 @@ function Admintable() {
   // update  api call
   const editFood = async () => {
     try {
-      const { data } = await axios.put(`${Api}/train/${id}`);
+      const { data } = await axios.put(`https://trainexpress.herokuapp.com/train/${id}`);
       setFood(data);
     } catch (error) {
       console.log(error.message);
@@ -32,7 +32,7 @@ function Admintable() {
   //get trains 
   const getTrain = async () => {
     try {
-      const res = await axios.get(`${Api}/train/find`);
+      const res = await axios.get("https://trainexpress.herokuapp.com/train/find");
       setTrain(res.data);
     } catch (error) {
       console.log(error.message);

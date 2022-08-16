@@ -5,7 +5,7 @@ import axios from "axios";
 import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
 import Adminlogo from "../components/Adminlogo";
-import Api from '../../Api';
+import Api from '../Api'
 // Login Schema
 
 function Log() {
@@ -31,7 +31,7 @@ function Log() {
                     onSubmit={async (values) => {
 
                         try {
-                            const url = `${Api}/login`
+                            const url = "https://trainexpress.herokuapp.com/login"
                             const { data } = await axios.post(url, values);
 
                             window.localStorage.setItem("accessToken", data);

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom';
 import "./Services.css"
 import { useNavigate } from "react-router-dom"
-import Api from '../../Api';
+import Api from '../Api'
 import Usernav from '../components/Usernav';
 
 function Services() {
@@ -12,7 +12,7 @@ function Services() {
 const  [api, setapi] = React.useState([]); 
 
   useEffect(() => {
-    fetch(`${Api}/train/find`)
+    fetch("https://trainexpress.herokuapp.com/train/find")
       .then((res) => res.json())
       .then((data) => {
         setapi(data);

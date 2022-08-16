@@ -7,7 +7,7 @@ import Travel from './Travel';
 import StripeCheckout from 'react-stripe-checkout'
 import Payment from './Payment';
 import Usernav from '../components/Usernav';
-import Api from '../../Api';
+import Api from '../Api'
 
 
 
@@ -49,7 +49,7 @@ function Traindata() {
 
         const getdetail = async () => {
             try {
-                const res = await axios.get(`${Api}/train/find/` + path);
+                const res = await axios.get(`https://trainexpress.herokuapp.com/train/find/` + path);
 
                 setdetail(res.data)
 
@@ -106,7 +106,7 @@ function Traindata() {
     const makeRequest = async () => {
         try {
             const res = await axios.post(
-               `${Api}/payment`,
+                "https://trainexpress.herokuapp.com/payment",
 
                 {
                     tokenId: stripeToken.id,

@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
-import Api from '../../Api';
+
 
 
 function Travel({ traindata }) {
@@ -67,7 +67,7 @@ function Travel({ traindata }) {
 
                                         try {
 
-                                            const { data } = await axios.post(`${Api}/passenger`, { passengerdata, traindata, userid });
+                                            const { data } = await axios.post("https://trainexpress.herokuapp.com/passenger", { passengerdata, traindata, userid });
                                             console.log(data);
                                             alert("Passenger Added Successfully");
 

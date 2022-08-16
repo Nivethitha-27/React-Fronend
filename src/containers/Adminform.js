@@ -2,7 +2,7 @@ import React from 'react'
 
 import axios from "axios";
 import Adminnav from '../components/Adminnav';
-import Api from '../../Api';
+import Api from '../Api'
 function Admin() {
 
     // form values
@@ -24,7 +24,7 @@ function Admin() {
     const handlesubmit = async (e) => {
         e.preventDefault();
         try {
-            const url = `${Api}/train`;
+            const url = "https://trainexpress.herokuapp.com/train";
             const res = await axios.post(url, user);
             console.log(res);
             localStorage.setItem("auth", JSON.stringify(res.user));

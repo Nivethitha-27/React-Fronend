@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom"
 import Adminnav from '../components/Adminnav';
-import Api from '../../Api';
+import Api from '../Api'
 
 function Adminbook() {
 
@@ -11,7 +11,7 @@ function Adminbook() {
   const [book, setbook] = React.useState([]);
 
   useEffect(() => {
-    fetch(`${Api}/passenger/find`)
+    fetch("https://trainexpress.herokuapp.com/passenger/find")
       .then((res) => res.json())
       .then((data) => {
         setbook(data);

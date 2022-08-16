@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
-import Api from '../../Api';
+import Api from '../Api'
 import { useParams } from "react-router-dom";
 import Usernav from "../components/Usernav";
 
@@ -43,7 +43,7 @@ export default function MyBookings() {
   // get userById Orders
   const getUserById = async () => {
     try {
-      const { data } = await axios.get(`${Api}/passenger/userid/${userId}`);
+      const { data } = await axios.get(`https://trainexpress.herokuapp.com/passenger/userid/${userId}`);
       setMyOrders(data);
       setIsLoading(false);
     } catch (error) {

@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useState, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 import Adminnav from '../components/Adminnav';
-import Api from '../../Api';
+import Api from '../Api';
 
 
 
@@ -19,7 +19,7 @@ function Update() {
     // edit food api call
     const editFood = async () => {
         try {
-            const { data } = await axios.get(`${Api}/train/find/${id}`);
+            const { data } = await axios.get(`https://trainexpress.herokuapp.com/train/find/${id}`);
             setFood(data);
         } catch (error) {
             console.log(error.message);
@@ -79,7 +79,7 @@ export function EditFoodForm({ food }) {
             price: price,
             routes: routes,
         };
-        fetch(`${Api}/train/${food._id}`, {
+        fetch(`https://trainexpress.herokuapp.com/train/${food._id}`, {
             method: "PUT",
             body: JSON.stringify(updateFood),
             headers: {
