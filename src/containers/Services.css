@@ -1,0 +1,16 @@
+thead{
+  background-color:rgb(238, 168, 244);
+  font-size: 18px;
+  font-family: 'Times New Roman', Times, serif;
+}
+tbody{
+  font-size: 14px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: lighter;
+ } 
+ .container{
+float:left;
+}
+/* table{
+  margin-left:2%;
+} */

@@ -1,0 +1,17 @@
+.nav-item{
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    color: white;
+   
+}
+.container-fluid{
+    background-color: white;
+}
+.navbar-brand{
+    padding-left:5%;
+ margin-top: -45px;
+}
+
+.nav-item:hover{
+ color:brown;
+}
