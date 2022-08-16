@@ -14,14 +14,18 @@ function Adminnav() {
                     </Link>
 
                     <div className="container mt-5">
-                        <ul className="nav justify-content-end">
+                        <ul className="nav justify-content-end" >
 
                             <li className="nav-item">
-                                <Link to="/admintable" style={{ textDecoration: 'none' }}>TrainDetails</Link></li>
+                                <Link to="/admintable" style={{ textDecoration: 'none' }}>TrainDetails</Link>
+                                <br></br></li>
+                                
                             <li className="nav-item">
                                 <Link to="/adminbook" style={{ textDecoration: 'none' }}>Booking</Link></li>
+                              
                             <li className="nav-item">
                                 <Link to="/adminuser" style={{ textDecoration: 'none' }}>Userdetails</Link></li>
+                                
                             <li className="nav-item">
                                 <Link to="/adminform" style={{ textDecoration: 'none' }} >AddingTrains</Link>
                             </li>

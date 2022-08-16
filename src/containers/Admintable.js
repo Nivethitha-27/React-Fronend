@@ -69,12 +69,12 @@ function Admintable() {
           <thead>
             <tr>
               {/* <td>TrainId</td> */}
-              <th>TrainNumber</th>
+              <th>TrainNum</th>
               <th>TrainName</th>
               <th>From</th>
               <th>To</th>
-              <th>ArrivalTime</th>
-              <th>DepatureTime</th>
+              <th>A.Time</th>
+              <th>D.Time</th>
               <th>Routes</th>
               <th>Actions</th>
 
@@ -95,11 +95,11 @@ function Admintable() {
                   <td>{data.routes}</td>
                   <td>
 
-                    <button className='btn btn-primary btn-lg' onClick={() => navigate("/update/edit/" + data._id)}>
+                    <button className='btn btn-primary btn-sm' onClick={() => navigate("/update/edit/" + data._id)}>
                     <iconify-icon icon="akar-icons:edit"></iconify-icon>
                     </button>
 
-                    <button className='btn btn-danger btn-lg' onClick={() => deletetrain(data)}>
+                    <button className='btn btn-danger btn-sm' onClick={() => deletetrain(data)}>
                       <iconify-icon icon="fluent:delete-20-filled">
                       </iconify-icon></button>
                   </td>

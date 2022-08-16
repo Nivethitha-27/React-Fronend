@@ -2,6 +2,7 @@
     font-size: 20px;
     font-family: 'Times New Roman', Times, serif;
     color: white;
+    display: block;
    
 }
 .container-fluid{
@@ -15,3 +16,6 @@
 .nav-item:hover{
  color:brown;
 }
+.navbar ul li { 
+	padding: 0px 20px; 
+ } 

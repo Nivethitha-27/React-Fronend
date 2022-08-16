@@ -15,7 +15,7 @@ function Adminlog() {
                     <div className='card'>
                         <div className='card-body'>
                             <div className='card-title'>
-                                <h2 style={{ color: "black", fontFamily: "timesnewroman" }}>Admin Login</h2>
+                                <h5 style={{ color: "black", fontFamily: "timesnewroman" }}>Admin Login</h5>
 
                                 <form className='mt-4'>
                                     <div class="form-group">
@@ -44,9 +44,9 @@ function Adminlog() {
                                             placeholder='Admin Password...'
                                         />
                                     </div>
-
+<br></br>
                                     <Link to="/admintable">
-                                        <button type="submit" className='btn btn-success btn-lg'>Login</button>
+                                        <button type="submit" className='btn btn-success btn-md'>Login</button>
                                     </Link>
 
                                 </form>

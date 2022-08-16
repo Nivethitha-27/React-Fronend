@@ -44,7 +44,7 @@ const  [api, setapi] = React.useState([]);
                  <td>{data.trainnumber}</td>
                   <td>{data.from}</td>
                   <td>{data.to}</td>
-                  <td><Link to={`/traindata/${data._id}`}><button className='btn btn-primary btn-md'>Clickhere</button></Link></td>
+                  <td><Link to={`/traindata/${data._id}`}><button className='btn btn-info btn-sm'>Clickhere</button></Link></td>
                 </tr>
              
             );

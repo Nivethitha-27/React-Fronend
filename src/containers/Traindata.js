@@ -142,14 +142,14 @@ function Traindata() {
                     <thead>
                         <tr>
                             <th>TrainName</th>
-                            <th>TrainNumber</th>
+                            <th>TrainNum</th>
                             <th>From</th>
                             <th>To</th>
-                            <th>ArrivalTime</th>
-                            <th>DepatureTime</th>
+                            <th>A.Time</th>
+                            <th>D.Time</th>
                             <th>Routes</th>
                             <th>Price</th>
-                            <th>No of passenger</th>
+                            <th>Passenger</th>
                             {/* <th>No.of passenger</th> */}
                         </tr>
                     </thead>
@@ -186,8 +186,9 @@ function Traindata() {
                 currency="INR"
                 stripeKey={Key}
             >
-                <div className="travel" style={{ marginTop: "3%", marginRight: "20%" }}>
-                    <button className="btn btn-success btn-lg" style={{ float: "right", fontSize: "13px" }}>Rs.{Totalfare}
+               
+                <div className="travel" style={{ marginTop: "2%", marginRight: "20%" }}>
+                    <button className="btn btn-success btn-sm" style={{ float: "right", fontSize: "13px" }}>Rs.{Totalfare}
                         <p>Continue for payment</p>
                     </button>
                 </div>

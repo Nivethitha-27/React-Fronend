@@ -55,11 +55,11 @@ function Log() {
                                             <div className='card-body'>
                                                 <div className='card-title'></div>
                                                 <div className="container-fluid h-custom">
-                                                    <h3 style={{ fontFamily: "timesnewroman" }}>Login</h3>
+                                                    <h5 style={{ fontFamily: "timesnewroman" }}>Login</h5>
                                                     {/* email */}
                                                     <div className="mb-4">
 
-                                                        <label className="form-label" style={{ fontSize: 15, fontFamily: "monospace"}} >Email</label>
+                                                    <b>  <label className="form-label" style={{ fontSize: 15, fontFamily: "monospace"}} >Email</label></b>
                                                        
                                                         <Field
                                                             style={{ fontSize: "14px" }}
@@ -78,7 +78,7 @@ function Log() {
                                                     ) : null}
                                                     {/* Password */}
                                                     <div className="mb-4">
-                                                        <label htmlfor="username" className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>Password</label>
+                                                    <b> <label htmlfor="username" className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>Password</label></b>
                                                         <Field
                                                             style={{ fontSize: "14px" }}
                                                             className="form-control"
@@ -93,13 +93,13 @@ function Log() {
                                                         </span>
                                                     ) : null}
                                                     {/* submit button */}
-                                                    <div className=" mt-4" style={{ fontSize: 13, fontFamily: "timesnewroman" }}>
+                                                    <div className=" mt-4" style={{ fontSize: 15, fontFamily: "timesnewroman" }}>
                                                         Don't have an account?
                                                         <Link to="/register">
                                                             Register
                                                         </Link>
                                                         <br></br>
-                                                        <button type="submit" className='btn btn-success btn-lg'>Login</button>
+                                                        <button type="submit" className='btn btn-success btn-md'>Login</button>
                                                     </div>
                                                 </div>
                                             </div>

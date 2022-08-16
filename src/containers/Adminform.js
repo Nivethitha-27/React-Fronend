@@ -49,13 +49,13 @@ function Admin() {
 
                             <div className='card-body'>
                                 <div className='card-title'>
-                                    <h2 style={{ color: "black", fontFamily: "timesnewroman" }}>TrainDetails</h2>
+                                    <h5 style={{ color: "black", fontFamily: "timesnewroman" }}>TrainDetails</h5>
 
                                     <form className="mt-4" onSubmit={handlesubmit} autoComplete="off">
                                         <div className="mb-4">
                                             <div className='row'>
                                                 <div className='col'>
-                                                    <label htmlfor="trainnumber" className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>TrainNumber</label>
+                                                <b> <label htmlfor="trainnumber" className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>TrainNumber</label></b>
                                                     <input type="number"
                                                         style={{ fontSize: 14 }}
                                                         name="trainnumber"
@@ -70,7 +70,7 @@ function Admin() {
 
 
                                                 <div className='col'>
-                                                    <label htmlfor="trainname" className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>TrainName</label>
+                                                <b>  <label htmlfor="trainname" className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>TrainName</label></b>
                                                     <input type="text"
                                                         style={{ fontSize: 14 }}
                                                         name="trainname"
@@ -88,7 +88,7 @@ function Admin() {
                                         <div className="mb-4">
                                             <div className='row'>
                                                 <div className='col'>
-                                                    <label htmlfor="from" className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>From</label>
+                                                <b>  <label htmlfor="from" className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>From</label></b>
                                                     <input type="text"
                                                         style={{ fontSize: 14 }}
                                                         name="from"
@@ -103,7 +103,7 @@ function Admin() {
 
 
                                                 <div className='col'>
-                                                    <label htmlfor="to" className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>To</label>
+                                                <b> <label htmlfor="to" className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>To</label></b>
                                                     <input type="text"
                                                         style={{ fontSize: 14 }}
                                                         name="to"
@@ -120,7 +120,7 @@ function Admin() {
                                         <div className="mb-4">
                                             <div className='row'>
                                                 <div className='col'>
-                                                    <label htmlfor="depaturetime" className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>DepatureTime</label>
+                                                <b> <label htmlfor="depaturetime" className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>DepatureTime</label></b>
                                                     <input type="time"
                                                         style={{ fontSize: 14 }}
                                                         name="depaturetime"
@@ -134,7 +134,7 @@ function Admin() {
                                                 </div>
 
                                                 <div className='col'>
-                                                    <label htmlfor="arrivaltime" className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>ArrivalTime</label>
+                                                <b>  <label htmlfor="arrivaltime" className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>ArrivalTime</label></b>
 
                                                     <input type="time"
                                                         style={{ fontSize: 14 }}
@@ -152,7 +152,7 @@ function Admin() {
 
                                         </div>
                                         <div className="mb-4">
-                                            <label htmlfor="price" className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>Price</label>
+                                        <b>  <label htmlfor="price" className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>Price</label></b>
                                             <input type="text"
                                                 style={{ fontSize: 14 }}
                                                 name="price"
@@ -166,7 +166,7 @@ function Admin() {
                                         </div>
 
                                         <div className="mb-4">
-                                            <label htmlfor="routes" className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>Routes</label>
+                                        <b> <label htmlfor="routes" className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>Routes</label></b>
                                             <input type="text"
                                                 style={{ fontSize: 14 }}
                                                 name="routes"
@@ -178,7 +178,7 @@ function Admin() {
                                                 required
                                             />
                                         </div>
-                                        <button type="submit" className='btn btn-success btn-lg'>Add</button>
+                                        <button type="submit" className='btn btn-success btn-md'>Add</button>
 
                                     </form>
                                 </div>

@@ -103,11 +103,11 @@ export function EditFoodForm({ food }) {
 
                                 <div className='card-body'>
                                     <div className='card-title'></div>
-                                    <h2 style={{ color: "black", fontFamily: "timesnewroman" }}>TrainDetails</h2>
+                                    <h5 style={{ color: "black", fontFamily: "timesnewroman" }}>TrainDetails</h5>
                                     <div className="mb-4">
                                         <div className='row'>
                                             <div className='col'>
-                                                <label htmlfor="trainnumber" className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>TrainNumber</label>
+                                              <b> <label htmlfor="trainnumber" className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>TrainNumber</label></b>
                                                 <input
                                                     style={{ fontSize: 14 }}
                                                     className="mt-2 form-control"
@@ -118,7 +118,7 @@ export function EditFoodForm({ food }) {
                                                 />
                                             </div>
                                             <div className='col'>
-                                                <label htmlfor="trainnumber" className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>TrainName</label>
+                                               <b> <label htmlfor="trainnumber" className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>TrainName</label></b>
                                                 {/* description */}
                                                 <input
                                                     style={{ fontSize: 14 }}
@@ -133,7 +133,7 @@ export function EditFoodForm({ food }) {
                                         {/* price  */}
                                         <div className='row'>
                                             <div className='col'>
-                                                <label htmlfor="trainnumber" className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>From</label>
+                                             <b> <label htmlfor="trainnumber" className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>From</label></b>  
                                                 <input
                                                     style={{ fontSize: 14 }}
                                                     className="mt-2 form-control"
@@ -145,7 +145,7 @@ export function EditFoodForm({ food }) {
                                             </div>
                                             {/* rating */}
                                             <div className='col'>
-                                                <label htmlfor="trainnumber" className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>ArrivalTime</label>
+                                              <b> <label htmlfor="trainnumber" className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>ArrivalTime</label></b> 
                                                 <input
                                                     style={{ fontSize: 14 }}
                                                     className="mt-2 form-control"
@@ -159,7 +159,7 @@ export function EditFoodForm({ food }) {
                                         {/* offer */}
                                         <div className='row'>
                                             <div className='col'>
-                                                <label htmlfor="trainnumber" className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>To</label>
+                                               <b> <label htmlfor="trainnumber" className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>To</label></b>
                                                 <input
                                                     style={{ fontSize: 14 }}
                                                     className="mt-2 form-control"
@@ -170,7 +170,7 @@ export function EditFoodForm({ food }) {
                                                 />
                                             </div>
                                             <div className='col'>
-                                                <label htmlfor="trainnumber" className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>Depaturetime</label>
+                                            <b> <label htmlfor="trainnumber" className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>Depaturetime</label></b>
                                                 <input
                                                     style={{ fontSize: 14 }}
                                                     className="mt-2 form-control"
@@ -183,7 +183,7 @@ export function EditFoodForm({ food }) {
                                         </div>
                                         <div className='row'>
                                             <div className='col'>
-                                                <label htmlfor="trainnumber" className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>Price</label>
+                                            <b> <label htmlfor="trainnumber" className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>Price</label></b>
                                                 <input
                                                     style={{ fontSize: 14 }}
                                                     className="mt-2 form-control"
@@ -194,7 +194,7 @@ export function EditFoodForm({ food }) {
                                                 />
                                             </div>
                                             <div className='col'>
-                                                <label htmlfor="trainnumber" className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>Routes</label>
+                                            <b>  <label htmlfor="trainnumber" className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>Routes</label></b>
                                                 <input
                                                     style={{ fontSize: 14 }}
                                                     className="mt-2 form-control"
@@ -207,7 +207,7 @@ export function EditFoodForm({ food }) {
                                         </div><br></br>
 
                                         <button
-                                            className="btn btn-primary btn-lg"
+                                            className="btn btn-primary btn-md"
                                             onClick={editfood}
                                         >
                                             UPDATE

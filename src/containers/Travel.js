@@ -38,7 +38,7 @@ function Travel({ traindata }) {
     return (
 
         <div className="container">
-            <div className='container my-5' style={{ float: "right", width: "80%" }} >
+            <div className='container' style={{ float: "right", width: "80%" }} >
                 <div className='row'>
                     <div className='col-sm-3'> </div>
                     <div className='col-sm-6'></div>
@@ -197,7 +197,7 @@ function Travel({ traindata }) {
                                             </div>
                                             {/* submit button */}
 
-                                            <button type="submit" className="btn btn-primary btn-lg">Submit</button>
+                                            <button type="submit" className="btn btn-primary btn-sm">Submit</button>
 
 
                                         </Form>

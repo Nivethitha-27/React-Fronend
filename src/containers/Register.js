@@ -36,7 +36,7 @@ export default function SignUpPage() {
                         <div className='card'>
                             <div className='card-body'>
                                 <div className='card-title'>
-                                    <h2 style={{ color: "black", fontFamily: "timesnewroman" }}>Signup</h2>
+                                    <h5 style={{ color: "black", fontFamily: "timesnewroman" }}>Signup</h5>
                                     {/* Formik validation */}
                                     <Formik
                                         initialValues={{
@@ -77,7 +77,7 @@ export default function SignUpPage() {
                                                 {/* Full name */}
                                                 <div className="mb-4">
 
-                                                    <label className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>UserName</label>
+                                                <b> <label className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>UserName</label></b>
                                                     <Field
                                                         style={{ fontSize: "14px" }}
                                                         type="text"
@@ -95,7 +95,7 @@ export default function SignUpPage() {
                                                 {/* Email */}
                                                 <div className="mb-4">
 
-                                                    <label className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>Email</label>
+                                                <b>  <label className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>Email</label></b>
                                                     <Field
                                                         style={{ fontSize: "14px" }}
                                                         type="email"
@@ -113,7 +113,7 @@ export default function SignUpPage() {
                                                 {/* Contact number */}
                                                 <div className="mb-4">
 
-                                                    <label className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>MobileNumber</label>
+                                                <b>  <label className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>MobileNumber</label></b>
                                                     <Field
                                                         style={{ fontSize: "14px" }}
                                                         type="number"
@@ -131,7 +131,7 @@ export default function SignUpPage() {
                                                 {/* Password */}
                                                 <div className="mb-4">
 
-                                                    <label className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>Password</label>
+                                                <b>   <label className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>Password</label></b>
                                                     <Field
                                                         style={{ fontSize: "14px" }}
                                                         type="password"
@@ -162,14 +162,14 @@ export default function SignUpPage() {
                                                         *{errors.cPassword}*
                                                     </span>
                                                 ) : null} */}
-                                                <p style={{ fontSize: 13, fontFamily: "timesnewroman" }}>
+                                                <p style={{ fontSize: 15, fontFamily: "timesnewroman" }}>
                                                     Already a User?{" "}
                                                     <Link to="/login" >
                                                         Login
                                                     </Link>{" "}
                                                 </p>
                                                 {/* submit Button */}
-                                                <button type="submit" className="btn btn-primary btn-lg"> Sign Up</button>
+                                                <button type="submit" className="btn btn-primary btn-md"> Sign Up</button>
                                             </Form>
                                         )}
                                     </Formik>
