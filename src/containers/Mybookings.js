@@ -67,11 +67,11 @@ export default function MyBookings() {
               <th>Booking Id</th>
               <th>TrainName</th>
               <th>From</th>
-              <th>DepatureTime</th>
+              <th>D.Time</th>
               <th>To</th>
-              <th>ArrivalTime</th>
+              <th>A.Time</th>
               <th>Routes</th>
-
+              <th>Passenger</th>
             </tr>
           </thead>
           {/* <div className="text-center">
@@ -97,6 +97,7 @@ export default function MyBookings() {
                   <td>{u.traindata.to}</td>
                   <td>{u.traindata.depaturetime}</td>
                   <td>{u.traindata.routes}</td>
+                  <td>{u.passengerdata.name1}</td>
                   {/* <td className="d-flex gap-2 justify-content-center">
                     <button
                       className="btn btn-outline-white border-0"
