@@ -25,7 +25,7 @@ function Adminbook() {
     <>
       <Adminnav />
 
-      <div className='container my-5'>
+      <div className='book'>
 
         <table className="table">
           <thead>

@@ -24,12 +24,12 @@ function Navbar() {
                         <ul className="nav justify-content-end">
 
                             <li className="nav-item">
-                                <Link to="/login" style={{ textDecoration: 'none' }}>Login</Link></li>
+                                <Link to="/login" style={{ textDecoration: 'none', color: "deeppink"   }}>Login</Link></li>
 
                             {/* <li className="nav-item">
                                 <Link to="/signup" style={{ textDecoration: 'none' }}>Signup</Link></li> */}
                             <li className="nav-item">
-                                <Link to="/adminlogin" style={{ textDecoration: 'none' }}>Admin</Link></li>
+                                <Link to="/adminlog" style={{ textDecoration: 'none', color: "deeppink"  }}>Admin</Link></li>
 
                         </ul>
                     </div>

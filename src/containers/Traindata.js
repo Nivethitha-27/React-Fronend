@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom';
 import Travel from './Travel';
 import StripeCheckout from 'react-stripe-checkout'
-import Payment from './Payment';
+import "./Traindata.css";
 import Usernav from '../components/Usernav';
 import Api from '../Api'
 
@@ -62,19 +62,6 @@ function Traindata() {
     }, [path]);
 
     //price
-
-    // const [fare, setfare] = useState(0);
-
-    // const handleincrement = () => {
-    //     if (fare < 10) {
-    //         setfare(fare + 1)
-    //     }
-    // };
-    // const handledecrement = () => {
-    //     if (fare > 0) {
-    //         setfare(fare - 1)
-    //     }
-    // }
     const [quantity, setQuantity] = useState(1);
 
     const handleQuantity = (type) => {
@@ -84,51 +71,50 @@ function Traindata() {
             setQuantity(quantity + 1);
         }
     };
-    //   const price = detail.price;
-    //   console.log(price);
+
     const Totalfare = detail.price * quantity;
 
     // payment
 
 
-    const Key = 'pk_test_51LUy9mSHMIw7a9qsG8WWRiLSuJ1d7dvfKKm1kYWdZjirGItPTFF0ssWFnh1VbdSYRS4XUxNifQrCXPK5C8yfdS2X00cftSxsTc'
-    const [stripeToken, setStripeToken] = useState(null)
+    // const Key = 'pk_test_51LUy9mSHMIw7a9qsG8WWRiLSuJ1d7dvfKKm1kYWdZjirGItPTFF0ssWFnh1VbdSYRS4XUxNifQrCXPK5C8yfdS2X00cftSxsTc'
+    // const [stripeToken, setStripeToken] = useState(null)
 
-    const onToken = (token) => {
+    // const onToken = (token) => {
 
-        setStripeToken(token);
-        console.log(token);
-        alert("Payment Successful")
-        navigate("/payment");
+    //     setStripeToken(token);
+    //     console.log(token);
+    //     // alert("Payment Successful")
+    //     navigate("/payment");
 
-    };
+    // };
 
-    const makeRequest = async () => {
-        try {
-            const res = await axios.post(
-                "https://trainexpress.herokuapp.com/payment",
+    // const makeRequest = async () => {
+    //     try {
+    //         const res = await axios.post(
+    //             "https://trainexpress.herokuapp.com/payment",
 
-                {
-                    tokenId: stripeToken.id,
-                    amount: { Totalfare }
-                });
-            if (res === 200) {
-                // alert("Payment Successful")
-                // navigate("/payment");
-                console.log("200");
-            } else {
-                console.log("error");
-            }
-            console.log(res.data);
-        } catch (err) {
-            console.log(err);
-        }
-    };
+    //             {
+    //                 tokenId: stripeToken.id,
+    //                 amount: { Totalfare }
+    //             });
+    //         if (res === 200) {
+    //             // alert("Payment Successful")
+    //             // navigate("/payment");
+    //             console.log("200");
+    //         } else {
+    //             console.log("error");
+    //         }
+    //         console.log(res.data);
+    //     } catch (err) {
+    //         console.log(err);
+    //     }
+    // };
 
-    useEffect(() => {
-        makeRequest();
-        // stripeToken && makeRequest()
-    }, []);
+    // useEffect(() => {
+    //     makeRequest();
+    //     // stripeToken && makeRequest()
+    // }, []);
 
     // table 
 
@@ -176,23 +162,9 @@ function Traindata() {
                 </table>
             </div>
 
-            <Travel traindata={detail} />
+            <Travel traindata={detail} Totalfare={Totalfare} />
 
-            <StripeCheckout
-                name="TrainExpress"
-                description={`Your Total Fare is Rs.${Totalfare}`}
-                amount={Totalfare * 100}
-                token={onToken}
-                currency="INR"
-                stripeKey={Key}
-            >
-               
-                <div className="travel" style={{ marginTop: "2%", marginRight: "20%" }}>
-                    <button className="btn btn-success btn-sm" style={{ float: "right", fontSize: "13px" }}>Rs.{Totalfare}
-                        <p>Continue for payment</p>
-                    </button>
-                </div>
-            </StripeCheckout>
+            
 
         </>
     )

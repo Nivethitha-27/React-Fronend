@@ -48,14 +48,7 @@ export default function SignUpPage() {
                                         validationSchema={SignupSchema}
                                         onSubmit={async (values) => {
                                             const form = {
-                //                                 email: values.email,
-                //                                 message: `Registration Successfully <br/>
-                // <br/>
-                // Best Wishes!!! <br/>
-                // NoodleCountry Restaurant
-                // `,
-                //                                 subject: "Registration",
-                //                                 name: `"Hi", ${values.username}`,
+
                                             };
 
                                             try {
@@ -77,7 +70,7 @@ export default function SignUpPage() {
                                                 {/* Full name */}
                                                 <div className="mb-4">
 
-                                                <b> <label className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>UserName</label></b>
+                                                    <b> <label className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>UserName</label></b>
                                                     <Field
                                                         style={{ fontSize: "14px" }}
                                                         type="text"
@@ -95,7 +88,7 @@ export default function SignUpPage() {
                                                 {/* Email */}
                                                 <div className="mb-4">
 
-                                                <b>  <label className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>Email</label></b>
+                                                    <b>  <label className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>Email</label></b>
                                                     <Field
                                                         style={{ fontSize: "14px" }}
                                                         type="email"
@@ -113,7 +106,7 @@ export default function SignUpPage() {
                                                 {/* Contact number */}
                                                 <div className="mb-4">
 
-                                                <b>  <label className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>MobileNumber</label></b>
+                                                    <b>  <label className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>MobileNumber</label></b>
                                                     <Field
                                                         style={{ fontSize: "14px" }}
                                                         type="number"
@@ -131,7 +124,7 @@ export default function SignUpPage() {
                                                 {/* Password */}
                                                 <div className="mb-4">
 
-                                                <b>   <label className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>Password</label></b>
+                                                    <b>   <label className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>Password</label></b>
                                                     <Field
                                                         style={{ fontSize: "14px" }}
                                                         type="password"
@@ -169,7 +162,7 @@ export default function SignUpPage() {
                                                     </Link>{" "}
                                                 </p>
                                                 {/* submit Button */}
-                                                <button type="submit" className="btn btn-primary btn-md"> Sign Up</button>
+                                                <button type="submit" className="btn btn-primary btn-md">Register</button>
                                             </Form>
                                         )}
                                     </Formik>

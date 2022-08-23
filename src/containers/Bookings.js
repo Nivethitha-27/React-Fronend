@@ -8,7 +8,7 @@ import { useParams } from "react-router-dom";
 import Usernav from "../components/Usernav";
 
 // my orders page
-export default function MyBookings() {
+export default function Bookings() {
   // authToken
   const accessToken = window.localStorage.getItem("accessToken");
 
@@ -60,7 +60,7 @@ export default function MyBookings() {
     <>
       <Usernav />
 
-      <div className="container">
+      <div className="book">
         <table className="table">
           <thead >
             <tr>
@@ -71,7 +71,13 @@ export default function MyBookings() {
               <th>To</th>
               <th>A.Time</th>
               <th>Routes</th>
+<<<<<<< HEAD:src/containers/Mybookings.js
               <th>Passenger</th>
+=======
+              <th colSpan={3}>PassengerName</th>
+              <th colSpan={3}>PassengerAge</th>
+
+>>>>>>> fc7106f (second commit):src/containers/Bookings.js
             </tr>
           </thead>
           {/* <div className="text-center">
@@ -98,6 +104,14 @@ export default function MyBookings() {
                   <td>{u.traindata.depaturetime}</td>
                   <td>{u.traindata.routes}</td>
                   <td>{u.passengerdata.name1}</td>
+<<<<<<< HEAD:src/containers/Mybookings.js
+=======
+                  <td>{u.passengerdata.name2}</td>
+                  <td>{u.passengerdata.name3}</td>
+                  <td>{u.passengerdata.age1}</td>
+                  <td>{u.passengerdata.age2}</td>
+                  <td>{u.passengerdata.age3}</td>
+>>>>>>> fc7106f (second commit):src/containers/Bookings.js
                   {/* <td className="d-flex gap-2 justify-content-center">
                     <button
                       className="btn btn-outline-white border-0"

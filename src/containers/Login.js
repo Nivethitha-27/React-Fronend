@@ -36,7 +36,7 @@ function Log() {
 
                             window.localStorage.setItem("accessToken", data);
                             window.localStorage.setItem("email", values.email);
-                            navigate("/services");
+                            navigate("/search");
                             alert("loggedin successfully");
                         } catch ({ response: { data } }) {
                             alert("Wrong credential!");

@@ -1,11 +1,15 @@
 import React from "react";
 import axios from "axios";
+import StripeCheckout from 'react-stripe-checkout'
 import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
+import { Link, useNavigate } from 'react-router-dom'
+import { useEffect, useState } from 'react'
 
 
 
-function Travel({ traindata }) {
+function Travel({ traindata, Totalfare }) {
+    const navigate = useNavigate()
     const passengerSchema = Yup.object().shape({
         name1: Yup.string().required(),
         age1: Yup.string().required(),
@@ -19,6 +23,7 @@ function Travel({ traindata }) {
     //user id
 
     const Token = window.localStorage.getItem("accessToken")
+
 
     function parseJwt(token) {
         var base64Url = token.split(".")[1];
@@ -35,6 +40,48 @@ function Travel({ traindata }) {
     let a = parseJwt(Token);
     let userid = a._id;
 
+    //payment 
+
+
+    const Key = 'pk_test_51LUy9mSHMIw7a9qsG8WWRiLSuJ1d7dvfKKm1kYWdZjirGItPTFF0ssWFnh1VbdSYRS4XUxNifQrCXPK5C8yfdS2X00cftSxsTc'
+    const [stripeToken, setStripeToken] = useState(null)
+
+    const onToken = (token) => {
+
+        setStripeToken(token);
+        console.log(token);
+        // alert("Payment Successful")
+        navigate("/payment");
+
+    };
+
+    const makeRequest = async () => {
+        try {
+            const res = await axios.post(
+                "https://trainexpress.herokuapp.com/payment",
+
+                {
+                    tokenId: stripeToken.id,
+                    amount: { Totalfare }
+                });
+            if (res === 200) {
+                // alert("Payment Successful")
+                // navigate("/payment");
+                console.log("200");
+            } else {
+                console.log("error");
+            }
+            console.log(res.data);
+        } catch (err) {
+            console.log(err);
+        }
+    };
+
+    useEffect(() => {
+        makeRequest();
+        // stripeToken && makeRequest()
+    }, []);
+
     return (
 
         <div className="container">
@@ -46,8 +93,7 @@ function Travel({ traindata }) {
 
                         <div className='card-body'>
                             <div className='card-title'>
-                                {/* <div className="row justify-content-center mt-5 m-2">
-                <div className="col-sm-4 col-md-6 col-lg-4 rounded-5 shadow-lg p-4 text-center border"> */}
+
                                 <b className="text-center" style={{ fontSize: "15px", fontFamily: 'monospace' }}>PassengerDetails</b>
 
                                 {/* Formik validation */}
@@ -69,8 +115,6 @@ function Travel({ traindata }) {
 
                                             const { data } = await axios.post("https://trainexpress.herokuapp.com/passenger", { passengerdata, traindata, userid });
                                             console.log(data);
-                                            alert("Passenger Added Successfully");
-
                                         } catch (error) {
                                             console.log(error.message);
                                         }
@@ -112,7 +156,7 @@ function Travel({ traindata }) {
                                                     ) : null}
 
                                                     {errors.age1 && touched.age1 ? (
-                                                        <span className="text-danger text-start" style={{ fontSize: "13px" }}>
+                                                        <span className="text-danger text-start" style={{ fontSize: "14px" }}>
                                                             {errors.age1}
                                                         </span>
                                                     ) : null}
@@ -150,7 +194,7 @@ function Travel({ traindata }) {
                                                         </span>
                                                     ) : null}
                                                     {errors.age2 && touched.age2 ? (
-                                                        <span className="text-danger text-start" style={{ fontSize: "13px" }}>
+                                                        <span className="text-danger text-start" style={{ fontSize: "14px" }}>
                                                             {errors.age2}
                                                         </span>
                                                     ) : null}
@@ -180,7 +224,7 @@ function Travel({ traindata }) {
                                                 </div>
                                                 <div className="d-flex justify-content-between">
                                                     {errors.name3 && touched.name3 ? (
-                                                        <span className="text-danger text-start" style={{ fontSize: "13px" }}>
+                                                        <span className="text-danger text-start" style={{ fontSize: "14px" }}>
                                                             {errors.name3}
                                                         </span>
                                                     ) : null}
@@ -188,7 +232,7 @@ function Travel({ traindata }) {
 
 
                                                     {errors.age3 && touched.age3 ? (
-                                                        <span className="text-danger text-start" style={{ fontSize: "13px" }}>
+                                                        <span className="text-danger text-start" style={{ fontSize: "14px" }}>
                                                             {errors.age3}
                                                         </span>
                                                     ) : null}
@@ -196,9 +240,25 @@ function Travel({ traindata }) {
                                                 </div>
                                             </div>
                                             {/* submit button */}
+                                            <StripeCheckout
+                                                name="TrainExpress"
+                                                description={`Your Total Fare is Rs.${Totalfare}`}
+                                                amount={Totalfare * 100}
+                                                token={onToken}
+                                                currency="INR"
+                                                stripeKey={Key}
+                                            >
 
-                                            <button type="submit" className="btn btn-primary btn-sm">Submit</button>
+                                                <button type="submit" className="btn btn-success btn-sm">Payment
+                                                    Rs.{Totalfare}</button>
 
+                                                {/* <div className="travel" >
+                                                    <button className="button">Rs.{Totalfare}
+                                                        <br />
+                                                        Booking
+                                                    </button>
+                                                </div> */}
+                                            </StripeCheckout>
 
                                         </Form>
                                     )}

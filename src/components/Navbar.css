@@ -1,5 +1,5 @@
 .nav-item{
-    font-size: 20px;
+    font-size: 18px;
     font-family: 'Times New Roman', Times, serif;
     color: white;
     display: block;
@@ -11,10 +11,6 @@
 .navbar-brand{
     padding-left:5%;
  margin-top: -45px;
-}
-
-.nav-item:hover{
- color:brown;
 }
 .navbar ul li { 
 	padding: 0px 20px; 

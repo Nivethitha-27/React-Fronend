@@ -95,7 +95,7 @@ function Admintable() {
                   <td>{data.routes}</td>
                   <td>
 
-                    <button className='btn btn-primary btn-sm' onClick={() => navigate("/update/edit/" + data._id)}>
+                    <button className='btn btn-primary btn-sm' onClick={() => navigate("/trainupdate/edit/" + data._id)}>
                     <iconify-icon icon="akar-icons:edit"></iconify-icon>
                     </button>
 

@@ -10,7 +10,7 @@ import Api from '../Api';
 
 
 // Edit FoodList function
-function Update() {
+function Trainupdate() {
     // state management
     const { id } = useParams();
     const [food, setFood] = useState(null);
@@ -223,4 +223,4 @@ export function EditFoodForm({ food }) {
         </>
     );
 }
-export default Update
+export default Trainupdate

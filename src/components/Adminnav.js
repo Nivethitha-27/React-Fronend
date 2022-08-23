@@ -17,17 +17,17 @@ function Adminnav() {
                         <ul className="nav justify-content-end" >
 
                             <li className="nav-item">
-                                <Link to="/admintable" style={{ textDecoration: 'none' }}>TrainDetails</Link>
+                                <Link to="/admintable" style={{ textDecoration: 'none', color: "deeppink"  }}>TrainDetails</Link>
                                 <br></br></li>
                                 
                             <li className="nav-item">
-                                <Link to="/adminbook" style={{ textDecoration: 'none' }}>Booking</Link></li>
+                                <Link to="/adminbook" style={{ textDecoration: 'none', color: "deeppink"   }}>Booking</Link></li>
                               
                             <li className="nav-item">
-                                <Link to="/adminuser" style={{ textDecoration: 'none' }}>Userdetails</Link></li>
+                                <Link to="/adminuser" style={{ textDecoration: 'none', color: "deeppink"  }}>Userdetails</Link></li>
                                 
                             <li className="nav-item">
-                                <Link to="/adminform" style={{ textDecoration: 'none' }} >AddingTrains</Link>
+                                <Link to="/adminform" style={{ textDecoration: 'none', color: "deeppink"  }} >AddingTrains</Link>
                             </li>
                         </ul>
                     </div>
