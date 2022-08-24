@@ -3,7 +3,7 @@ import axios from "axios";
 import StripeCheckout from 'react-stripe-checkout'
 import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react'
 
 
@@ -83,7 +83,6 @@ function Travel({ traindata, Totalfare }) {
     }, []);
 
     return (
-
         <div className="container">
             <div className='container' style={{ float: "right", width: "80%" }} >
                 <div className='row'>
@@ -110,10 +109,11 @@ function Travel({ traindata, Totalfare }) {
                                     onSubmit={async (values) => {
                                         // api call
                                         const passengerdata = values
-
+                                        console.log(passengerdata);
+                                        console.log(traindata);
+                                        console.log(userid);
                                         try {
-
-                                            const { data } = await axios.post("https://trainexpress.herokuapp.com/passenger", { passengerdata, traindata, userid });
+                                            const data = await axios.post("https://trainexpress.herokuapp.com/passenger", { passengerdata, traindata, userid });
                                             console.log(data);
                                         } catch (error) {
                                             console.log(error.message);
@@ -249,15 +249,8 @@ function Travel({ traindata, Totalfare }) {
                                                 stripeKey={Key}
                                             >
 
-                                                <button type="submit" className="btn btn-success btn-sm">Payment
-                                                    Rs.{Totalfare}</button>
-
-                                                {/* <div className="travel" >
-                                                    <button className="button">Rs.{Totalfare}
-                                                        <br />
-                                                        Booking
-                                                    </button>
-                                                </div> */}
+                                                <button type="submit" className="btn btn-success btn-sm">submit Rs.{Totalfare}
+                                                </button>
                                             </StripeCheckout>
 
                                         </Form>

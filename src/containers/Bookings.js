@@ -80,18 +80,6 @@ export default function Bookings() {
 
             </tr>
           </thead>
-          {/* <div className="text-center">
-              {" "}
-              {isLoading && (
-                <div className="text-center">
-                  <img
-                  className="text-center"
-                    src="https://i.stack.imgur.com/hzk6C.gif"
-                    alt=""
-                  />
-                </div>
-              )}
-            </div> */}
           <tbody>
             {myOrders.map((u, index) => {
               return (

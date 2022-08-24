@@ -179,10 +179,10 @@ export default function Passenger() {
                                             const passengerdata = values
                                             const traindata = detail
                                             try {
-                                                 await axios.post("http://localhost:5000/passenger", { passengerdata, userId,  traindata });
+                                                 await axios.post("https://trainexpress.herokuapp.com/passenger", { passengerdata, userId,  traindata });
                                               
                                                 // await axios.post(
-                                                //     "http://localhost:5000/payment",
+                                                //     "https://trainexpress.herokuapp.com/payment",
                                                 //     {
                                                 //         userId, tokenId: stripeToken.id,
                                                 //         amount: { Totalfare }

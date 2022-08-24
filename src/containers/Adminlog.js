@@ -2,8 +2,6 @@ import React from "react";
 import { useNavigate, Link } from "react-router-dom";
 import * as Yup from "yup";
 import { Formik, Field, Form, ErrorMessage } from "formik";
-
-
 import axios from "axios";
 import Adminnav from "../components/Adminnav";
 
@@ -31,11 +29,9 @@ export default function Adminlog() {
                     onSubmit={async (values) => {
                         try {
                             // api call
-                            const {
-                                data: { adminauthToken },
-                            } = await axios.post("https://trainexpress.herokuapp.com/admin/login", values);
+                            const { data } = await axios.post("https://trainexpress.herokuapp.com/admin/login", values);
                             // set admin authToken for local storage
-                            window.localStorage.setItem("adminauthToken", adminauthToken);
+                            window.localStorage.setItem("adminToken",data);
                             // navigate to admin home page
                             navigate("/admintable");
                             // success message

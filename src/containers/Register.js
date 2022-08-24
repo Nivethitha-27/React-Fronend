@@ -54,9 +54,6 @@ export default function SignUpPage() {
                                             try {
                                                 const url = "https://trainexpress.herokuapp.com/register";
                                                 const { data } = await axios.post(url, values);
-
-                                                // window.localStorage.setItem("accessToken", data);
-                                                // window.localStorage.setItem("email", values.email);
                                                 navigate("/login");
                                                 alert("Registered Successfully");
                                             } catch ({ response: { data } }) {

@@ -5,22 +5,18 @@ import { useNavigate, useParams } from 'react-router-dom';
 import Adminnav from '../components/Adminnav';
 import Api from '../Api';
 
-
-
-
-
-// Edit FoodList function
+// Edit TrainList function
 function Trainupdate() {
     // state management
     const { id } = useParams();
-    const [food, setFood] = useState(null);
+    const [train, settrain] = useState(null);
 
 
-    // edit food api call
-    const editFood = async () => {
+    // edit train api call
+    const edittrain= async () => {
         try {
             const { data } = await axios.get(`https://trainexpress.herokuapp.com/train/find/${id}`);
-            setFood(data);
+            settrain(data);
         } catch (error) {
             console.log(error.message);
         }
@@ -28,14 +24,14 @@ function Trainupdate() {
 
     // useEffect use refresh data
     useEffect(() => {
-        editFood();
+        edittrain();
     });
 
     return (
 
         <div className="container">
-            {food ? (
-                <EditFoodForm food={food} />
+            {train ? (
+                <EdittrainForm train={train} />
             ) : (
                 <div className="progress mt-3">
                     <div
@@ -52,24 +48,24 @@ function Trainupdate() {
     );
 }
 
-// Edit Food list form function
-export function EditFoodForm({ food }) {
+// Edit train list form function
+export function EdittrainForm({ train }) {
     // navigate to page
     const navigate = useNavigate();
 
     // state management
-    const [trainnumber, settrainnumber] = useState(food.trainnumber);
-    const [trainname, settrainname] = useState(food.trainname);
-    const [from, setfrom] = useState(food.from);
-    const [arrivaltime, setarrivaltime] = useState(food.arrivaltime);
-    const [to, setto] = useState(food.to);
-    const [depaturetime, setdepaturetime] = useState(food.depaturetime);
-    const [price, setprice] = useState(food.price);
-    const [routes, setroutes] = useState(food.routes);
+    const [trainnumber, settrainnumber] = useState(train.trainnumber);
+    const [trainname, settrainname] = useState(train.trainname);
+    const [from, setfrom] = useState(train.from);
+    const [arrivaltime, setarrivaltime] = useState(train.arrivaltime);
+    const [to, setto] = useState(train.to);
+    const [depaturetime, setdepaturetime] = useState(train.depaturetime);
+    const [price, setprice] = useState(train.price);
+    const [routes, setroutes] = useState(train.routes);
 
-    // edit food update form and api call
-    const editfood = () => {
-        const updateFood = {
+    // edit train update form and api call
+    const edittrain = () => {
+        const updatetrain = {
             trainnumber: trainnumber,
             trainname: trainname,
             from: from,
@@ -79,9 +75,9 @@ export function EditFoodForm({ food }) {
             price: price,
             routes: routes,
         };
-        fetch(`https://trainexpress.herokuapp.com/train/${food._id}`, {
+        fetch(`https://trainexpress.herokuapp.com/train/${train._id}`, {
             method: "PUT",
-            body: JSON.stringify(updateFood),
+            body: JSON.stringify(updatetrain),
             headers: {
                 "Content-Type": "application/json",
             },
@@ -208,7 +204,7 @@ export function EditFoodForm({ food }) {
 
                                         <button
                                             className="btn btn-primary btn-md"
-                                            onClick={editfood}
+                                            onClick={edittrain}
                                         >
                                             UPDATE
                                         </button>

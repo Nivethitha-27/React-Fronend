@@ -17,10 +17,6 @@ export default function Userprofile() {
 
     username: Yup.string().required(),
     mobile: Yup.number().required().positive().integer(),
-    // password: Yup.string().required("Please enter your password"),
-    // cPassword: Yup.string()
-    //   .required("Please retype your password.")
-    //   .oneOf([Yup.ref("password")], "Your passwords do not match."),
 
   });
   // get Id from authToken
@@ -89,8 +85,6 @@ export default function Userprofile() {
               initialValues={{
                 username: "",
                 mobile: "",
-                // password: "",
-                // cPassword: "",
 
               }}
               validationSchema={updateuserSchema}
@@ -98,7 +92,7 @@ export default function Userprofile() {
 
                 try {
                   // Register api call
-                  await axios.put(`http://localhost:5000/user/${userId}`, values);
+                  await axios.put(`https://trainexpress.herokuapp.com/user/${userId}`, values);
                   // send mail to user api call
                   // await axios.post(`${ProductAPI}/auth/sendmail`, form);
                   getUserProfile();
@@ -172,38 +166,6 @@ export default function Userprofile() {
                               *{errors.email}*
                             </span>
                           ) : null}
-
-                          {/* Password */}
-                          {/* <div>
-                    <Field
-                      style={{ fontSize: "14px" }}
-                      type="password"
-                      name="password"
-                      placeholder="Password" */}
-                          {/* //     className="form-control"
-                  //   />
-                  // </div> */}
-                          {/* // {errors.password && touched.password ? ( */}
-                          {/* //   <span className="text-danger text-start">
-                  //     *{errors.password}*
-                  //   </span>
-                  // ) : null} */}
-
-                          {/* // Confirm Password    */}
-                          {/* // <div>
-                  //   <Field */}
-                          {/* //     style={{ fontSize: "14px" }}
-                  //     type="password"
-                  //     name="cPassword"
-                  //     placeholder="Confirm Password"
-                  //     className="form-control"
-                  //   /> */}
-                          {/* // </div>
-                  // {errors.cPassword && touched.cPassword ? (
-                  //   <span className="text-danger text-start">
-                  //     *{errors.cPassword}*
-                  //   </span>
-                  // ) : null} */}
 
                           {/* submit Button */}
                           <button

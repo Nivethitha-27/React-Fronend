@@ -10,13 +10,13 @@ function Admintable() {
   const [train, setTrain] = React.useState([]);
 
   const { id } = useParams();
-  const [food, setFood] = useState(null);
+  const [item, setitem] = useState(null);
 
   // update  api call
-  const editFood = async () => {
+  const edititem = async () => {
     try {
       const { data } = await axios.put(`https://trainexpress.herokuapp.com/train/${id}`);
-      setFood(data);
+      setitem(data);
     } catch (error) {
       console.log(error.message);
     }
@@ -24,7 +24,7 @@ function Admintable() {
 
   // useEffect use refresh data
   useEffect(() => {
-    editFood();
+    edititem();
   });
 
 
@@ -48,7 +48,7 @@ function Admintable() {
 
     if (window.confirm(`Are You Sure Delete This Train ${_id}`, { _id })) {
       try {
-        await axios.delete(`http://localhost:5000/train/${_id}`);
+        await axios.delete(`https://trainexpress.herokuapp.com/train/${_id}`);
         alert("Deleted Successfully");
         getTrain();
       } catch (error) {

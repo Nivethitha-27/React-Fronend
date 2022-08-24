@@ -7,7 +7,7 @@ import Usernav from '../components/Usernav';
 import "./Services.css";
 
 function Search() {
-
+    const Uauth = window.localStorage.getItem('accessToken')
     const navigate = useNavigate();
     const { id } = useParams();
     const [api, setapi] = React.useState([]);
@@ -25,12 +25,15 @@ function Search() {
         setData({ ...data, [name]: value });
 
     };
-
-
     // getting data
 
     useEffect(() => {
-        fetch("https://trainexpress.herokuapp.com/train/find")
+        fetch("https://trainexpress.herokuapp.com/train/find",
+        {
+            headers: {
+              "Authorization": `Bearer ${Uauth}`
+            }}
+        )
             .then((res) => res.json())
             .then((data) => {
                 setapi(data);
@@ -38,7 +41,6 @@ function Search() {
                 console.log(data);
             });
     }, []);
-
 
     const handlesubmit = async (e) => {
         e.preventDefault();

@@ -31,8 +31,7 @@ function Routing() {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/search" element={<Search />} />
-        {/* <Route path="/result/send/:id" element={<Result />} /> */}
-        <Route path="/traindata/:id" element={<Traindata />} />
+       <Route path="/traindata/:id" element={<Traindata />} />
         <Route path="/bookings" element={<Bookings />} />
         <Route path="/userprofile" element={<Userprofile />} />
         {/* <Route path="/travel" element={<Travel/>} /> */}
