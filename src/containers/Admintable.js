@@ -40,7 +40,7 @@ function Admintable() {
   //get trains 
   const getTrain = async () => {
     try {
-      const res = await axios.get("https://trainexpress.herokuapp.com//train/find",
+      const res = await axios.get("https://trainexpress.herokuapp.com/train/find",
         {
           headers: {
             "Authorization": `Bearer ${Aauth}`
