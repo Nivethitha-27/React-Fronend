@@ -83,7 +83,7 @@ function Search() {
                                                         onChange={handleChange}
                                                         value={data.from}
                                                         name='from'>
-                                                        <option selected>DestinationPlace</option>
+                                                        <option selected>Choose</option>
                                                         <option value="madurai">Madurai</option>
                                                         <option value="Mannargudi">Mannargudi</option>
                                                         <option value="ChennaiEgmore">ChennaiEgmore</option>
@@ -106,7 +106,7 @@ function Search() {
                                                         onChange={handleChange}
                                                         value={data.to}
                                                         name='to'>
-                                                        <option selected>ArrivalPlace</option>
+                                                        <option selected>Choose</option>
                                                         <option value="trichy">Trichy</option>
                                                         <option value="Coimbatore">Coimbatore</option>
                                                         <option value="Kanyakumari">Kanyakumari</option>
