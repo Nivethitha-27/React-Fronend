@@ -10,7 +10,7 @@ function Navbar() {
     return (
         <>
 
-            <nav className="navbar navbar-expand-md">
+            <nav className="navbar navbar-expand-md " style={{ backgroundcolor: "rgb(238, 168, 244)" }}>
                 <div className="container-fluid">
                     <Link to="/">
                         <img src="https://i.ibb.co/cYxZhwF/logo.png" width="300" height="100" alt='' />
