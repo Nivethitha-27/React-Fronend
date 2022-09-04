@@ -26,7 +26,7 @@ function Travel({ traindata, Totalfare }) {
     const makeRequest = async () => {
         try {
             const res = await axios.post(
-                "https://trainexpress.herokuapp.com//payment",
+                "https://trainexpress.herokuapp.com/payment",
                 {
                     headers: [{
                         "Authorization": `Bearer ${Uauth}`
@@ -80,14 +80,14 @@ function Travel({ traindata, Totalfare }) {
         const passengerdata = formValues
         try {
             // api call
-            const { data } = await axios.post("https://trainexpress.herokuapp.com//passenger", { passengerdata, traindata, Totalfare, email },
+            const { data } = await axios.post("https://trainexpress.herokuapp.com/passenger", { passengerdata, traindata, Totalfare, email },
                 {
                     headers: {
                         "Authorization": `Bearer ${Uauth}`
                     }
                 });
          // mail 
-            const res = await axios.post("https://trainexpress.herokuapp.com//passenger/mail",
+            const res = await axios.post("https://trainexpress.herokuapp.com/passenger/mail",
                 {
                     email: data.email,
                     TrainName: data.traindata.trainname,

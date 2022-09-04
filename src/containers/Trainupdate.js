@@ -87,7 +87,7 @@ export function EdittrainForm({ train }) {
             price: price,
             routes: routes,
         };
-        await axios.put(`https://trainexpress.herokuapp.com//train/${train._id}`, updatetrain,
+        await axios.put(`https://trainexpress.herokuapp.com/train/${train._id}`, updatetrain,
             {
                 headers: {
                     "Authorization": `Bearer ${Aauth}`

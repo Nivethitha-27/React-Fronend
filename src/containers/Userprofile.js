@@ -81,7 +81,7 @@ export default function Userprofile() {
 
                 try {
                   // Register api call
-                  await axios.put("https://trainexpress.herokuapp.com//user/userupdate", values,
+                  await axios.put("https://trainexpress.herokuapp.com/user/userupdate", values,
                     {
                       headers: {
                         "Authorization": `Bearer ${Uauth}`

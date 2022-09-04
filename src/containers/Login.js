@@ -32,7 +32,7 @@ function Log() {
                     onSubmit={async (values) => {
 
                         try {
-                            const url = "https://trainexpress.herokuapp.com//login"
+                            const url = "https://trainexpress.herokuapp.com/login"
                             const { data } = await axios.post(url, values);
 
                             window.localStorage.setItem("accessToken", data);

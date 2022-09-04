@@ -62,7 +62,7 @@ function Admintable() {
 
     if (window.confirm(`Are You Sure Delete This Train ${_id}`, { _id })) {
       try {
-        await axios.delete(`https://trainexpress.herokuapp.com//train/${_id}`,
+        await axios.delete(`https://trainexpress.herokuapp.com/train/${_id}`,
           {
             headers: {
               "Authorization": `Bearer ${Aauth}`

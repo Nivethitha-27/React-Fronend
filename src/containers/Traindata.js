@@ -28,7 +28,7 @@ function Traindata() {
 
         const getdetail = async () => {
             try {
-                const res = await axios.get(`https://trainexpress.herokuapp.com//train/find/` + path,
+                const res = await axios.get(`https://trainexpress.herokuapp.com/train/find/` + path,
                     {
                         headers: {
                             "Authorization": `Bearer ${Uauth}`

@@ -25,7 +25,7 @@ function Search() {
     // getting data
 
     useEffect(() => {
-        fetch("https://trainexpress.herokuapp.com//train/find",
+        fetch("https://trainexpress.herokuapp.com/train/find",
             {
                 headers: {
                     "Authorization": `Bearer ${Uauth}`
@@ -42,7 +42,7 @@ function Search() {
     const handlesubmit = async (e) => {
         e.preventDefault();
         try {
-            const url = `https://trainexpress.herokuapp.com//train/find?from=${data.from}&to=${data.to}`
+            const url = `https://trainexpress.herokuapp.com/train/find?from=${data.from}&to=${data.to}`
             const res = await axios.get(url,
                 {
                     headers: {

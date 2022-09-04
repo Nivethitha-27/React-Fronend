@@ -11,7 +11,7 @@ const Forgot = () => {
             if (!/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email)) {
                 return
             }
-            await axios.post('https://trainexpress.herokuapp.com//forgot', { email })
+            await axios.post('https://trainexpress.herokuapp.com/forgot', { email })
             toast("Check Your Mail", { autoClose: 2000 })
             navigate('/login')
 

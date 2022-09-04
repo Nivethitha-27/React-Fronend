@@ -44,7 +44,7 @@ export default function Bookings() {
 
     if (window.confirm(`Are You Sure to Cancel Ticket ${_id}`, { _id })) {
       try {
-        await axios.delete(`https://trainexpress.herokuapp.com//passenger/${_id}`,
+        await axios.delete(`https://trainexpress.herokuapp.com/passenger/${_id}`,
           {
             headers: {
               "Authorization": `Bearer ${Uauth}`

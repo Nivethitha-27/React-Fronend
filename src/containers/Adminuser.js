@@ -12,7 +12,7 @@ function Adminuser() {
 
     const getuser = async () => {
         try {
-            const { data } = await axios.get("https://trainexpress.herokuapp.com//user/find",
+            const { data } = await axios.get("https://trainexpress.herokuapp.com/user/find",
                 {
                     headers: {
                         "Authorization": `Bearer ${Aauth}`

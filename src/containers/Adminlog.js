@@ -31,7 +31,7 @@ export default function Adminlog() {
                     onSubmit={async (values) => {
                         try {
                             // api call
-                            const { data } = await axios.post("https://trainexpress.herokuapp.com//admin/login", values);
+                            const { data } = await axios.post("https://trainexpress.herokuapp.com/admin/login", values);
                             // set admin authToken for local storage
                             window.localStorage.setItem("adminToken",data);
                             // navigate to admin home page
