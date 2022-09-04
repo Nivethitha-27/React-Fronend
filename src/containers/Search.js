@@ -84,7 +84,7 @@ function Search() {
                                                         value={data.from}
                                                         name='from'>
                                                         <option selected>DestinationPlace</option>
-                                                        <option value="madurai">madurai</option>
+                                                        <option value="madurai">Madurai</option>
                                                         <option value="Mannargudi">Mannargudi</option>
                                                         <option value="ChennaiEgmore">ChennaiEgmore</option>
                                                         <option value="Sengottai">Sengottai</option>
@@ -107,7 +107,7 @@ function Search() {
                                                         value={data.to}
                                                         name='to'>
                                                         <option selected>ArrivalPlace</option>
-                                                        <option value="trichy">trichy</option>
+                                                        <option value="trichy">Trichy</option>
                                                         <option value="Coimbatore">Coimbatore</option>
                                                         <option value="Kanyakumari">Kanyakumari</option>
                                                         <option value="Chennai">Chennai</option>
