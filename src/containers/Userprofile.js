@@ -25,7 +25,7 @@ export default function Userprofile() {
   //get user details
   const getUserProfile = async () => {
     try {
-      const { data } = await axios.get("https://trainexpress.herokuapp.com//user/id",
+      const { data } = await axios.get("https://trainexpress.herokuapp.com/user/id",
         {
           headers: {
             "Authorization": `Bearer ${Uauth}`
