@@ -1,14 +1,18 @@
 import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { toast } from "react-toastify";
 import "./Navbar.css"
 
 function Usernav() {
+
+    const email = window.localStorage.getItem("email");
+
     //logout
     const navigate = useNavigate();
     const Logout = () => {
         window.localStorage.clear();
         navigate("/");
-        alert("logged Out Successfully")
+        toast.success("logged Out Successfully",{autoClose:2000}, { position: toast.POSITION.TOP_RIGHT });
     };
     return (
         //usernavigation list
@@ -22,9 +26,10 @@ function Usernav() {
                     <div className="container mt-5">
                         <ul className="nav justify-content-end">
                             <li className="nav-item"  >
+
                                 <Link to="/userprofile" style={{ textDecoration: 'none', color: "deeppink" }}>
-                                    Profile
-                                    {/* <iconify-icon icon="healthicons:ui-user-profile" style={{color: "red"}}></iconify-icon> */}
+                                    {email}
+
                                 </Link>
                             </li>
 

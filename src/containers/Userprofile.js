@@ -20,30 +20,19 @@ export default function Userprofile() {
 
   });
   // get Id from authToken
-
-  const accessToken = window.localStorage.getItem("accessToken");
-
-  function parseJwt(token) {
-    var base64Url = token.split(".")[1];
-    var base64 = decodeURIComponent(
-      atob(base64Url)
-        .split("")
-        .map((c) => {
-          return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
-        })
-        .join("")
-    );
-    return JSON.parse(base64);
-  }
-
-  let a = parseJwt(accessToken);
-  let userId = a._id;
+  const Uauth = window.localStorage.getItem('accessToken')
 
   //get user details
-
   const getUserProfile = async () => {
     try {
-      const { data } = await axios.get(`https://trainexpress.herokuapp.com/user/${userId}`);
+      const { data } = await axios.get("https://trainexpress.herokuapp.com//user/id",
+        {
+          headers: {
+            "Authorization": `Bearer ${Uauth}`
+          }
+        }
+
+      );
       setUsers(data);
       console.log(data);
     } catch (error) {
@@ -65,14 +54,14 @@ export default function Userprofile() {
           {/* Profile details */}
           <div className="col-sm-4 col-md-6 col-lg-4 mx-auto text-center">
 
-            <h5 style={{color:"darkblue"}}>
+            <h5 style={{ color: "darkblue" }}>
               Username:{" "}
               <span className="text-secondary">{users.username}</span>
             </h5>
-            <h5 style={{color:"darkblue"}}>
+            <h5 style={{ color: "darkblue" }}>
               Email: <span className="text-secondary">{users.email}</span>
             </h5>
-            <h5 style={{color:"darkblue"}}>
+            <h5 style={{ color: "darkblue" }}>
               Mobile:{" "}
               <span className="text-secondary">{users.mobile} </span>
             </h5>
@@ -92,7 +81,13 @@ export default function Userprofile() {
 
                 try {
                   // Register api call
-                  await axios.put(`https://trainexpress.herokuapp.com/user/${userId}`, values);
+                  await axios.put("https://trainexpress.herokuapp.com//user/userupdate", values,
+                    {
+                      headers: {
+                        "Authorization": `Bearer ${Uauth}`
+                      }
+                    }
+                  );
                   // send mail to user api call
                   // await axios.post(`${ProductAPI}/auth/sendmail`, form);
                   getUserProfile();
@@ -107,76 +102,76 @@ export default function Userprofile() {
                 <Form >
                   <div className='container'>
                     {/* <div className='col-sm-6'> */}
-                      <div className='card'>
-                        <div className='card-body'>
-                          <div className='card-title'>
-                            <h5 style={{color:"darkblue"}}>Update your profile</h5></div>
-                          {/* Full name */}
-                          <div className="mb-4">
+                    <div className='card'>
+                      <div className='card-body'>
+                        <div className='card-title'>
+                          <h5 style={{ color: "darkblue" }}>Update your profile</h5></div>
+                        {/* Full name */}
+                        <div className="mb-4">
 
-                            <b>  <label className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }} >UserName</label></b>
-                            <Field
-                              style={{ fontSize: "14px" }}
-                              type="text"
-                              name="username"
-                              placeholder="UserName"
-                              className="form-control"
-                            />
-                          </div>
-                          {errors.username && touched.username ? (
-                            <span className="text-danger text-start">
-                              *{errors.username}*
-                            </span>
-                          ) : null}
-
-                          {/* Contact number */}
-                          <div className="mb-4">
-
-                            <b>  <label className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }} >Mobile</label></b>
-                            <Field
-                              style={{ fontSize: "14px" }}
-                              type="number"
-                              name="mobile"
-                              className="form-control"
-                              placeholder="Mobile Number"
-                            />
-                          </div>
-                          {errors.mobile && touched.mobile ? (
-                            <span className="text-danger text-start">
-                              *{errors.mobile}*
-                            </span>
-                          ) : null}
-
-                          {/* Email */}
-                          <div className="mb-4">
-
-                            <b>  <label className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }} >Email</label></b>
-                            <Field
-                              style={{ fontSize: "14px" }}
-                              type="email"
-                              name="email"
-                              placeholder="Email"
-                              className="form-control"
-                              value={users.email}
-                              disabled
-                            />
-                          </div>
-                          {errors.email && touched.email ? (
-                            <span className="text-danger text-start">
-                              *{errors.email}*
-                            </span>
-                          ) : null}
-
-                          {/* submit Button */}
-                          <button
-                            type="submit"
-                            className="btn btn-success btn-md"
-                          >
-                            Update
-                          </button>
+                          <b>  <label className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }} >UserName</label></b>
+                          <Field
+                            style={{ fontSize: "14px" }}
+                            type="text"
+                            name="username"
+                            placeholder="UserName"
+                            className="form-control"
+                          />
                         </div>
+                        {errors.username && touched.username ? (
+                          <span className="text-danger text-start">
+                            *{errors.username}*
+                          </span>
+                        ) : null}
+
+                        {/* Contact number */}
+                        <div className="mb-4">
+
+                          <b>  <label className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }} >Mobile</label></b>
+                          <Field
+                            style={{ fontSize: "14px" }}
+                            type="number"
+                            name="mobile"
+                            className="form-control"
+                            placeholder="Mobile Number"
+                          />
+                        </div>
+                        {errors.mobile && touched.mobile ? (
+                          <span className="text-danger text-start">
+                            *{errors.mobile}*
+                          </span>
+                        ) : null}
+
+                        {/* Email */}
+                        <div className="mb-4">
+
+                          <b>  <label className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }} >Email</label></b>
+                          <Field
+                            style={{ fontSize: "14px" }}
+                            type="email"
+                            name="email"
+                            placeholder="Email"
+                            className="form-control"
+                            value={users.email}
+                            disabled
+                          />
+                        </div>
+                        {errors.email && touched.email ? (
+                          <span className="text-danger text-start">
+                            *{errors.email}*
+                          </span>
+                        ) : null}
+
+                        {/* submit Button */}
+                        <button
+                          type="submit"
+                          className="btn btn-success btn-md"
+                        >
+                          Update
+                        </button>
                       </div>
                     </div>
+                  </div>
                   {/* </div> */}
                 </Form>
               )}

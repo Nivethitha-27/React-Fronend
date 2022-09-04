@@ -4,18 +4,27 @@ import { useState, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 import Adminnav from '../components/Adminnav';
 import Api from '../Api';
+import { toast } from "react-toastify";
 
 // Edit TrainList function
 function Trainupdate() {
+
+    const Aauth = window.localStorage.getItem('adminToken')
     // state management
     const { id } = useParams();
     const [train, settrain] = useState(null);
 
 
     // edit train api call
-    const edittrain= async () => {
+    const edittrain = async () => {
         try {
-            const { data } = await axios.get(`https://trainexpress.herokuapp.com/train/find/${id}`);
+            const { data } = await axios.get(`https://trainexpress.herokuapp.com//train/find/${id}`,
+                {
+                    headers: {
+                        "Authorization": `Bearer ${Aauth}`
+                    }
+                }
+            );
             settrain(data);
         } catch (error) {
             console.log(error.message);
@@ -50,6 +59,7 @@ function Trainupdate() {
 
 // Edit train list form function
 export function EdittrainForm({ train }) {
+    const Aauth = window.localStorage.getItem('adminToken')
     // navigate to page
     const navigate = useNavigate();
 
@@ -60,11 +70,12 @@ export function EdittrainForm({ train }) {
     const [arrivaltime, setarrivaltime] = useState(train.arrivaltime);
     const [to, setto] = useState(train.to);
     const [depaturetime, setdepaturetime] = useState(train.depaturetime);
+    const [date, setdate] = useState(train.date);
     const [price, setprice] = useState(train.price);
     const [routes, setroutes] = useState(train.routes);
 
     // edit train update form and api call
-    const edittrain = () => {
+    const edittrain = async () => {
         const updatetrain = {
             trainnumber: trainnumber,
             trainname: trainname,
@@ -72,20 +83,22 @@ export function EdittrainForm({ train }) {
             arrivaltime: arrivaltime,
             to: to,
             depaturetime: depaturetime,
+            date:date,
             price: price,
             routes: routes,
         };
-        fetch(`https://trainexpress.herokuapp.com/train/${train._id}`, {
-            method: "PUT",
-            body: JSON.stringify(updatetrain),
-            headers: {
-                "Content-Type": "application/json",
-            },
-        })
-            .then(() => navigate("/admintable"));
+        await axios.put(`https://trainexpress.herokuapp.com//train/${train._id}`, updatetrain,
+            {
+                headers: {
+                    "Authorization": `Bearer ${Aauth}`
+                }
+            }
+        )
+ .then(() => navigate("/admintable"));
+ toast.success("TrainDetailsUpdated",{autoClose:2000}, { position: toast.POSITION.TOP_RIGHT })
     };
 
-    return (
+ return (
 
         <>
             <Adminnav />
@@ -103,7 +116,7 @@ export function EdittrainForm({ train }) {
                                     <div className="mb-4">
                                         <div className='row'>
                                             <div className='col'>
-                                              <b> <label htmlfor="trainnumber" className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>TrainNumber</label></b>
+                                                <b> <label htmlfor="trainnumber" className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>TrainNumber</label></b>
                                                 <input
                                                     style={{ fontSize: 14 }}
                                                     className="mt-2 form-control"
@@ -114,7 +127,7 @@ export function EdittrainForm({ train }) {
                                                 />
                                             </div>
                                             <div className='col'>
-                                               <b> <label htmlfor="trainnumber" className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>TrainName</label></b>
+                                                <b> <label htmlfor="trainnumber" className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>TrainName</label></b>
                                                 {/* description */}
                                                 <input
                                                     style={{ fontSize: 14 }}
@@ -129,7 +142,7 @@ export function EdittrainForm({ train }) {
                                         {/* price  */}
                                         <div className='row'>
                                             <div className='col'>
-                                             <b> <label htmlfor="trainnumber" className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>From</label></b>  
+                                                <b> <label htmlfor="trainnumber" className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>From</label></b>
                                                 <input
                                                     style={{ fontSize: 14 }}
                                                     className="mt-2 form-control"
@@ -141,7 +154,7 @@ export function EdittrainForm({ train }) {
                                             </div>
                                             {/* rating */}
                                             <div className='col'>
-                                              <b> <label htmlfor="trainnumber" className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>ArrivalTime</label></b> 
+                                                <b> <label htmlfor="trainnumber" className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>ArrivalTime</label></b>
                                                 <input
                                                     style={{ fontSize: 14 }}
                                                     className="mt-2 form-control"
@@ -155,7 +168,7 @@ export function EdittrainForm({ train }) {
                                         {/* offer */}
                                         <div className='row'>
                                             <div className='col'>
-                                               <b> <label htmlfor="trainnumber" className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>To</label></b>
+                                                <b> <label htmlfor="trainnumber" className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>To</label></b>
                                                 <input
                                                     style={{ fontSize: 14 }}
                                                     className="mt-2 form-control"
@@ -166,7 +179,7 @@ export function EdittrainForm({ train }) {
                                                 />
                                             </div>
                                             <div className='col'>
-                                            <b> <label htmlfor="trainnumber" className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>Depaturetime</label></b>
+                                                <b> <label htmlfor="trainnumber" className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>Depaturetime</label></b>
                                                 <input
                                                     style={{ fontSize: 14 }}
                                                     className="mt-2 form-control"
@@ -179,7 +192,7 @@ export function EdittrainForm({ train }) {
                                         </div>
                                         <div className='row'>
                                             <div className='col'>
-                                            <b> <label htmlfor="trainnumber" className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>Price</label></b>
+                                                <b> <label htmlfor="trainnumber" className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>Price</label></b>
                                                 <input
                                                     style={{ fontSize: 14 }}
                                                     className="mt-2 form-control"
@@ -190,13 +203,24 @@ export function EdittrainForm({ train }) {
                                                 />
                                             </div>
                                             <div className='col'>
-                                            <b>  <label htmlfor="trainnumber" className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>Routes</label></b>
+                                                <b>  <label htmlfor="trainnumber" className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>Routes</label></b>
+                                                <input
+                                                    style={{ fontSize: 14 }}
+                                                    className="mt-2 form-control"
+                                                    value={date}
+                                                    type="date"
+                                                    placeholder="date"
+                                                    onChange={(event) => setdate(event.target.value)}
+                                                />
+                                            </div>
+                                            <div className='row'>
+                                                <b>  <label htmlfor="trainnumber" className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>Routes</label></b>
                                                 <input
                                                     style={{ fontSize: 14 }}
                                                     className="mt-2 form-control"
                                                     value={routes}
                                                     type="text"
-                                                    placeholder="Routes"
+                                                    placeholder="routes"
                                                     onChange={(event) => setroutes(event.target.value)}
                                                 />
                                             </div>

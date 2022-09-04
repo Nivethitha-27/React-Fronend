@@ -5,6 +5,7 @@ import axios from "axios";
 import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
 import Adminlogo from "../components/Adminlogo";
+import { toast } from "react-toastify";
 import Api from '../Api'
 // Login Schema
 
@@ -19,8 +20,8 @@ function Log() {
         <>
             <Adminlogo />
             <div className="container" >
-              
-                    
+
+
                 {/* Formik validation */}
                 <Formik
                     initialValues={{
@@ -31,15 +32,16 @@ function Log() {
                     onSubmit={async (values) => {
 
                         try {
-                            const url = "https://trainexpress.herokuapp.com/login"
+                            const url = "https://trainexpress.herokuapp.com//login"
                             const { data } = await axios.post(url, values);
 
                             window.localStorage.setItem("accessToken", data);
                             window.localStorage.setItem("email", values.email);
+
+                            toast.success("Loggedin successfully",{autoClose:2000}, { position: toast.POSITION.TOP_RIGHT });
                             navigate("/search");
-                            alert("loggedin successfully");
                         } catch ({ response: { data } }) {
-                            alert("Wrong credential!");
+                            toast.error("Wrong Credentials", { position: toast.POSITION.TOP_RIGHT });
                         }
                     }}
                 >
@@ -59,17 +61,17 @@ function Log() {
                                                     {/* email */}
                                                     <div className="mb-4">
 
-                                                    <b>  <label className="form-label" style={{ fontSize: 15, fontFamily: "monospace"}} >Email</label></b>
-                                                       
+                                                        <b>  <label className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }} >Email</label></b>
+
                                                         <Field
                                                             style={{ fontSize: "14px" }}
                                                             className="form-control"
                                                             type="email"
                                                             name="email"
                                                             placeholder="Email"
-                                                           
+
                                                         />
-                                                        
+
                                                     </div>
                                                     {errors.email && touched.email ? (
                                                         <span className="text-danger text-start" style={{ fontSize: "13px" }}>
@@ -78,7 +80,7 @@ function Log() {
                                                     ) : null}
                                                     {/* Password */}
                                                     <div className="mb-4">
-                                                    <b> <label htmlfor="username" className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>Password</label></b>
+                                                        <b> <label htmlfor="username" className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>Password</label></b>
                                                         <Field
                                                             style={{ fontSize: "14px" }}
                                                             className="form-control"
@@ -98,7 +100,9 @@ function Log() {
                                                         <Link to="/register">
                                                             Register
                                                         </Link>
-                                                        <br></br>
+                                                        <div className="forgot" style={{float:"right"}}>
+                                                       <Link to="/forgotpassword">ForgotPassword</Link></div> 
+                                                        <br/><br/>
                                                         <button type="submit" className='btn btn-success btn-md'>Login</button>
                                                     </div>
                                                 </div>
@@ -112,7 +116,7 @@ function Log() {
 
                 </Formik>
             </div>
-           
+
         </>
 
 

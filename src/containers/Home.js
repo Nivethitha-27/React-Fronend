@@ -31,8 +31,10 @@ function Home() {
                     </tbody>
                 </table><br></br><br></br>
                 <h4>You Can Book Your tickets and Can get the Routes of the Train</h4><br></br>
-                <Link to="/login">
-                    <h5>Logged In for More Details,</h5></Link>
+                <Link to="/login" style={{textDecoration:"none"}}>
+                    {/* <h5>Logged In for More Details,</h5>*/}
+                    <button className='btn btn-warning btn-md'>Log In For More Details</button>
+                    </Link> 
                 <div className='home'>
                     <img src='./images/google-train.gif' />
                 </div>

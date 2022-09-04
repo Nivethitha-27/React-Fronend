@@ -12,30 +12,9 @@ import Api from '../Api'
 
 
 function Traindata() {
+
+    const Uauth = window.localStorage.getItem('accessToken')
     const navigate = useNavigate()
-
-    // Getting userid from token
-
-    const accessToken = window.localStorage.getItem("accessToken")
-
-    function parseJwt(token) {
-        var base64Url = token.split(".")[1];
-        var base64 = decodeURIComponent(
-            atob(base64Url)
-                .split("")
-                .map((c) => {
-                    return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
-                })
-                .join("")
-        );
-        return JSON.parse(base64);
-    }
-    let a = parseJwt(accessToken);
-    let userId = a._id;
-    let email = a.email;
-    console.log(userId)
-    console.log(email)
-
 
     // use location
 
@@ -49,10 +28,14 @@ function Traindata() {
 
         const getdetail = async () => {
             try {
-                const res = await axios.get(`https://trainexpress.herokuapp.com/train/find/` + path);
-
+                const res = await axios.get(`https://trainexpress.herokuapp.com//train/find/` + path,
+                    {
+                        headers: {
+                            "Authorization": `Bearer ${Uauth}`
+                        }
+                    }
+                );
                 setdetail(res.data)
-
             } catch {
                 console.error(500);
             }
@@ -87,6 +70,7 @@ function Traindata() {
                         <tr>
                             <th>TrainName</th>
                             <th>TrainNum</th>
+                            <th>Date</th>
                             <th>From</th>
                             <th>To</th>
                             <th>A.Time</th>
@@ -94,13 +78,14 @@ function Traindata() {
                             <th>Routes</th>
                             <th>Price</th>
                             <th>Passenger</th>
-                            {/* <th>No.of passenger</th> */}
+                            <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td>{detail.trainname}</td>
                             <td>{detail.trainnumber}</td>
+                            <td>{detail.date}</td>
                             <td>{detail.from}</td>
                             <td>{detail.to}</td>
                             <td>{detail.arrivaltime}</td>
@@ -112,9 +97,7 @@ function Traindata() {
                                 <button className="qty3">{quantity}</button>
                                 <button className="qty4" onClick={() => handleQuantity("dec")}>-</button>
                             </div></td>
-                            {/* <td>
-                               Rs. {Totalfare}
-                            </td> */}
+                            <td>{detail.status} </td>
                         </tr>
                     </tbody>
                 </table>
@@ -122,7 +105,7 @@ function Traindata() {
 
             <Travel traindata={detail} Totalfare={Totalfare} />
 
-            
+
 
         </>
     )

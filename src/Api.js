@@ -1,3 +1,3 @@
-export const Api = "https://trainexpress.herokuapp.com"
+export const Api = "https://trainexpress.herokuapp.com/"
 
 

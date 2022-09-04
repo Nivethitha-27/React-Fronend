@@ -1,15 +1,12 @@
 import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom';
 import axios from "axios";
-import { useNavigate } from 'react-router-dom';
-import { useParams } from 'react-router-dom';
 import Usernav from '../components/Usernav';
 import "./Services.css";
 
 function Search() {
     const Uauth = window.localStorage.getItem('accessToken')
-    const navigate = useNavigate();
-    const { id } = useParams();
+
     const [api, setapi] = React.useState([]);
     const [list, setlist] = React.useState({
         trainname: "",
@@ -28,13 +25,13 @@ function Search() {
     // getting data
 
     useEffect(() => {
-        fetch("https://trainexpress.herokuapp.com/train/find",
-        {
-            headers: {
-              "Authorization": `Bearer ${Uauth}`
-            }}
-        )
-            .then((res) => res.json())
+        fetch("https://trainexpress.herokuapp.com//train/find",
+            {
+                headers: {
+                    "Authorization": `Bearer ${Uauth}`
+                }
+            }
+        ).then((res) => res.json())
             .then((data) => {
                 setapi(data);
 
@@ -45,8 +42,13 @@ function Search() {
     const handlesubmit = async (e) => {
         e.preventDefault();
         try {
-            const url = `https://trainexpress.herokuapp.com/train/find?from=${data.from}&to=${data.to}`;
-            const res = await axios.get(url, data);
+            const url = `https://trainexpress.herokuapp.com//train/find?from=${data.from}&to=${data.to}`
+            const res = await axios.get(url,
+                {
+                    headers: {
+                        "Authorization": `Bearer ${Uauth}`
+                    }
+                });
             setlist(res);
 
         } catch (error) {
@@ -74,78 +76,49 @@ function Search() {
                                     <form onSubmit={handlesubmit} autoComplete="off">
                                         <div className="mb-4">
                                             <div className='row'>
-
-                                                <b> <label htmlfor="trainnumber" className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>From</label></b>
-                                                <select class="form-select"
-                                                    id="from"
-                                                    onChange={handleChange}
-                                                    value={data.from}
-                                                    name='from'>
-                                                    <option selected>DestinationPlace</option>
-                                                    <option value="madurai">madurai</option>
-                                                    <option value="Mannargudi">Mannargudi</option>
-                                                    <option value="ChennaiEgmore">ChennaiEgmore</option>
-                                                    <option value="Sengottai">Sengottaii</option>
-                                                    <option value="Chennai Egmore">Chennai Egmore</option>
-                                                    <option value="Mgr Chennai Central">Mgr Chennai Central</option>
-                                                    <option value="Thanjavur">Thanjavur</option>
-                                                    <option value="Mayiladuturai">Mayiladuturai</option>
-                                                </select>
-
-                                                {/* <div className='row'>
                                                 <div className='col'>
-                                                <b> <label htmlfor="trainnumber" className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>TrainNumber</label></b>
-                                                    <input type="text"
-                                                        style={{ fontSize: 14 }}
-                                                        name="from"
-                                                        className="form-control"
+                                                    <b> <label htmlfor="trainnumber" className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>From</label></b>
+                                                    <select class="form-select"
                                                         id="from"
-                                                        placeholder="TrainNumber"
                                                         onChange={handleChange}
                                                         value={data.from}
-                                                        required
-                                                    />
-                                                </div> */}
+                                                        name='from'>
+                                                        <option selected>DestinationPlace</option>
+                                                        <option value="madurai">madurai</option>
+                                                        <option value="Mannargudi">Mannargudi</option>
+                                                        <option value="ChennaiEgmore">ChennaiEgmore</option>
+                                                        <option value="Sengottai">Sengottai</option>
+                                                        {/* <option value="Karaikudi">Karaikudi</option> */}
+                                                        <option value="Mgr Chennai Central">Mgr Chennai Central</option>
+                                                        <option value="Thanjavur">Thanjavur</option>
+                                                        <option value="Mayiladuturai">Mayiladuturai</option>
+                                                    </select>
 
-                                            </div>
-                                            < div className='row'>
+                                                </div>
+                                                < div className='col'>
 
-                                                <b> <label htmlfor="to"
-                                                    className="form-label"
-                                                    style={{ fontSize: 15, fontFamily: "monospace" }}>To</label></b>
+                                                    <b> <label htmlfor="to"
+                                                        className="form-label"
+                                                        style={{ fontSize: 15, fontFamily: "monospace" }}>To</label></b>
 
-                                                <select class="form-select"
-                                                    id="to"
-                                                    onChange={handleChange}
-                                                    value={data.to}
-                                                    name='to'>
-                                                    <option selected>ArrivalPlace</option>
-                                                    <option value="trichy">trichy</option>
-                                                    <option value="Coimbatore">Coimbatore</option>
-                                                    <option value="Kanyakumari">Kanyakumari</option>
-                                                    <option value="Chennai Express">Chennai Express</option>
-                                                    <option value="Chennai Egmore">Chennai Egmore</option>
-                                                    <option value="Kanyakumari">Kanyakumari</option>
-                                                    <option value="Coimbatore">Coimbatore</option>
-                                                    <option value="ChennaiEgmore">ChennaiEgmore</option>
-                                                    <option value="Coimbatore">Coimbatore</option>
-
-                                                </select>
-                                                {/* <div className='row'>
-                                                <div className='col'>
-                                                <b> <label htmlfor="trainnumber" className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>TrainNumber</label></b>
-                                                    <input type="text"
-                                                        style={{ fontSize: 14 }}
-                                                        name="to"
-                                                        className="form-control"
+                                                    <select class="form-select"
                                                         id="to"
-                                                        placeholder="TrainNumber"
                                                         onChange={handleChange}
                                                         value={data.to}
-                                                        required
-                                                    /> */}
-                                                {/* </div> */}
-                                                {/* </div> */}
+                                                        name='to'>
+                                                        <option selected>ArrivalPlace</option>
+                                                        <option value="trichy">trichy</option>
+                                                        <option value="Coimbatore">Coimbatore</option>
+                                                        <option value="Kanyakumari">Kanyakumari</option>
+                                                        <option value="Chennai">Chennai</option>
+                                                        {/* <option value="Pondicherry">Pondicherry</option> */}
+                                                        <option value="Coimbatore">Coimbatore</option>
+                                                        <option value="ChennaiEgmore">ChennaiEgmore</option>
+                                                        <option value="Coimbatore">Coimbatore</option>
+
+                                                    </select>
+                                                </div>
+
                                             </div>
                                         </div>
                                         <div className='row'>
@@ -183,7 +156,7 @@ function Search() {
                                     <td>{u.to}</td>
                                     <td>
                                         <Link to={`/traindata/${u._id}`}><button className='btn btn-success btn-sm'>Clickhere</button></Link>
-                                       
+
                                     </td>
                                 </tr>
                             );

@@ -1,7 +1,15 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { toast } from "react-toastify";
 
 function Adminnav() {
+ //logout
+    const navigate = useNavigate();
+    const Logout = () => {
+        window.localStorage.clear();
+        navigate("/");
+        toast.success("logged Out Successfully",{autoClose:2000}, { position: toast.POSITION.TOP_RIGHT });
+    };
     return (
       //navbar list
         <div>
@@ -28,6 +36,11 @@ function Adminnav() {
                                 
                             <li className="nav-item">
                                 <Link to="/adminform" style={{ textDecoration: 'none', color: "deeppink"  }} >AddingTrains</Link>
+                            </li>
+                            <li className="nav-item"> <Link to="/" style={{ textDecoration: 'none', color: "deeppink" }} onClick={Logout}>
+                               
+                                <iconify-icon icon="ri:logout-circle-line" style={{ color: "red", rotate: "90deg",marginTop:"5%" }}>
+                                </iconify-icon></Link>
                             </li>
                         </ul>
                     </div>

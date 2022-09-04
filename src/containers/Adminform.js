@@ -1,38 +1,47 @@
 import React from 'react'
-
+import { toast } from "react-toastify";
 import axios from "axios";
 import Adminnav from '../components/Adminnav';
 import Api from '../Api'
+import { useNavigate } from 'react-router-dom';
 function Admin() {
-
+    const Aauth = window.localStorage.getItem('adminToken')
+    const navigate = useNavigate()
     // form values
-    const [user, setUser] = React.useState({
+    const [train, setTrain] = React.useState({
         trainname: "",
         trainnumber: "",
         from: "",
         to: "",
-        time: "",
+        // depaturetime:"",
+        // arrivaltime: "",
+        time:"",
+        date:"",
         routes: "",
+        
 
     });
 
     const handleChange = ({ target: { name, value } }) => {
-        setUser({ ...user, [name]: value });
+        setTrain({ ...train, [name]: value });
     };
     // posting train details
 
     const handlesubmit = async (e) => {
         e.preventDefault();
         try {
-            const url = "https://trainexpress.herokuapp.com/train";
-            const res = await axios.post(url, user);
+            const res = await axios.post("https://trainexpress.herokuapp.com//train", train,
+                {
+                    headers: {
+                        "Authorization": `Bearer ${Aauth}`
+                    }
+                });
             console.log(res);
-            localStorage.setItem("auth", JSON.stringify(res.user));
-
-            alert("TrainDetails Added Sucessfully")
-
-            // history.push("/login");
-        } catch { }
+            toast.success("Train Added Successfully", { autoClose: 2000 }, { position: toast.POSITION.TOP_RIGHT });
+            navigate("/admintable")
+        } catch (error) {
+            console.log(error.message);
+        }
     };
 
 
@@ -55,7 +64,7 @@ function Admin() {
                                         <div className="mb-4">
                                             <div className='row'>
                                                 <div className='col'>
-                                                <b> <label htmlfor="trainnumber" className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>TrainNumber</label></b>
+                                                    <b> <label htmlfor="trainnumber" className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>TrainNumber</label></b>
                                                     <input type="number"
                                                         style={{ fontSize: 14 }}
                                                         name="trainnumber"
@@ -63,14 +72,14 @@ function Admin() {
                                                         id="trainnumber"
                                                         placeholder="TrainNumber"
                                                         onChange={handleChange}
-                                                        value={user.trainnumber}
+                                                        value={train.trainnumber}
                                                         required
                                                     />
                                                 </div>
 
 
                                                 <div className='col'>
-                                                <b>  <label htmlfor="trainname" className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>TrainName</label></b>
+                                                    <b>  <label htmlfor="trainname" className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>TrainName</label></b>
                                                     <input type="text"
                                                         style={{ fontSize: 14 }}
                                                         name="trainname"
@@ -78,7 +87,7 @@ function Admin() {
                                                         id="trainname"
                                                         placeholder="TrainName"
                                                         onChange={handleChange}
-                                                        value={user.trainname}
+                                                        value={train.trainname}
                                                         required
                                                     />
                                                 </div>
@@ -88,7 +97,7 @@ function Admin() {
                                         <div className="mb-4">
                                             <div className='row'>
                                                 <div className='col'>
-                                                <b>  <label htmlfor="from" className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>From</label></b>
+                                                    <b>  <label htmlfor="from" className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>From</label></b>
                                                     <input type="text"
                                                         style={{ fontSize: 14 }}
                                                         name="from"
@@ -96,14 +105,14 @@ function Admin() {
                                                         id="from"
                                                         placeholder="From"
                                                         onChange={handleChange}
-                                                        value={user.from}
+                                                        value={train.from}
                                                         required
                                                     />
                                                 </div>
 
 
                                                 <div className='col'>
-                                                <b> <label htmlfor="to" className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>To</label></b>
+                                                    <b> <label htmlfor="to" className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>To</label></b>
                                                     <input type="text"
                                                         style={{ fontSize: 14 }}
                                                         name="to"
@@ -111,7 +120,7 @@ function Admin() {
                                                         id="to"
                                                         placeholder="To"
                                                         onChange={handleChange}
-                                                        value={user.to}
+                                                        value={train.to}
                                                         required
                                                     />
                                                 </div>
@@ -120,7 +129,7 @@ function Admin() {
                                         <div className="mb-4">
                                             <div className='row'>
                                                 <div className='col'>
-                                                <b> <label htmlfor="depaturetime" className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>DepatureTime</label></b>
+                                                    <b> <label htmlfor="depaturetime" className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>DepatureTime</label></b>
                                                     <input type="time"
                                                         style={{ fontSize: 14 }}
                                                         name="depaturetime"
@@ -128,13 +137,13 @@ function Admin() {
                                                         id="depaturetime"
                                                         placeholder="DepatureTime"
                                                         onChange={handleChange}
-                                                        value={user.depaturetime}
+                                                        value={train.depaturetime}
                                                         required
                                                     />
                                                 </div>
 
                                                 <div className='col'>
-                                                <b>  <label htmlfor="arrivaltime" className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>ArrivalTime</label></b>
+                                                    <b>  <label htmlfor="arrivaltime" className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>ArrivalTime</label></b>
 
                                                     <input type="time"
                                                         style={{ fontSize: 14 }}
@@ -143,7 +152,7 @@ function Admin() {
                                                         id="arrivaltime"
                                                         placeholder="ArrivalTime"
                                                         onChange={handleChange}
-                                                        value={user.arrivaltime}
+                                                        value={train.arrivaltime}
                                                         required
 
                                                     />
@@ -152,21 +161,38 @@ function Admin() {
 
                                         </div>
                                         <div className="mb-4">
-                                        <b>  <label htmlfor="price" className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>Price</label></b>
-                                            <input type="text"
-                                                style={{ fontSize: 14 }}
-                                                name="price"
-                                                className="form-control"
-                                                id="price"
-                                                placeholder="Price in Rupees"
-                                                onChange={handleChange}
-                                                value={user.price}
-                                                required
-                                            />
+                                            <div className='row'>
+                                                <div className='col'>
+                                                    <b>  <label htmlfor="price" className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>Price</label></b>
+                                                    <input type="text"
+                                                        style={{ fontSize: 14 }}
+                                                        name="price"
+                                                        className="form-control"
+                                                        id="price"
+                                                        placeholder="Price in Rupees"
+                                                        onChange={handleChange}
+                                                        value={train.price}
+                                                        required
+                                                    />
+                                                </div>
+                                                <div className='col'>
+                                                    <b>  <label htmlfor="date" className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>Date</label></b>
+                                                    <input type="date"
+                                                        style={{ fontSize: 14 }}
+                                                        name="date"
+                                                        className="form-control"
+                                                        id="date"
+                                                        placeholder="date in Rupees"
+                                                        onChange={handleChange}
+                                                        value={train.date}
+                                                        required
+                                                    />
+                                                </div>
+                                            </div>
                                         </div>
 
                                         <div className="mb-4">
-                                        <b> <label htmlfor="routes" className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>Routes</label></b>
+                                            <b> <label htmlfor="routes" className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>Routes</label></b>
                                             <input type="text"
                                                 style={{ fontSize: 14 }}
                                                 name="routes"
@@ -174,7 +200,7 @@ function Admin() {
                                                 id="routes"
                                                 placeholder="Routes"
                                                 onChange={handleChange}
-                                                value={user.routes}
+                                                value={train.routes}
                                                 required
                                             />
                                         </div>

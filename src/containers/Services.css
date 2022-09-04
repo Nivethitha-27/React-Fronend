@@ -11,3 +11,6 @@ tbody{
  .container{
 float:left;
 }
+table{
+  text-align: center;
+}

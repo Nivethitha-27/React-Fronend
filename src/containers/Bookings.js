@@ -1,51 +1,33 @@
 // import files
 import React, { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
+import { toast } from "react-toastify";
 import Api from '../Api'
-import { useParams } from "react-router-dom";
 import Usernav from "../components/Usernav";
 
 // my orders page
 export default function Bookings() {
   // authToken
-  const accessToken = window.localStorage.getItem("accessToken");
-
-  // navigate to page
+  const Uauth = window.localStorage.getItem('accessToken')
   const navigate = useNavigate();
-
+  const { id } = useParams();
   // user details state management
-  const [myOrders, setMyOrders] = useState([]);
-
-  // Search orders
-  const [query, setQuery] = useState("");
-
-  // Initial Loading Page
-  const [isLoading, setIsLoading] = useState(true);
-
-  // get userById from authToken
-  function parseJwt(token) {
-    var base64Url = token.split(".")[1];
-    var base64 = decodeURIComponent(
-      atob(base64Url)
-        .split("")
-        .map((c) => {
-          return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
-        })
-        .join("")
-    );
-    return JSON.parse(base64);
-  }
-  let a = parseJwt(accessToken);
-  let userId = a._id;
-
-  // get userById Orders
+  const [mybookings, setMybookings] = useState([]);
+  // get userById bookings
   const getUserById = async () => {
     try {
-      const { data } = await axios.get(`https://trainexpress.herokuapp.com/passenger/userid/${userId}`);
-      setMyOrders(data);
-      setIsLoading(false);
+      const { data } = await axios.get(`https://trainexpress.herokuapp.com//passenger/userid/user`,
+        {
+          headers: {
+            "Authorization": `Bearer ${Uauth}`
+          }
+        }
+      );
+      setMybookings(data);
+      console.log(data);
+
     } catch (error) {
       console.log(error.message);
     }
@@ -56,6 +38,27 @@ export default function Bookings() {
     getUserById();
   }, []);
 
+  //cancel ticket
+
+  const cancelticket = async ({ _id }) => {
+
+    if (window.confirm(`Are You Sure to Cancel Ticket ${_id}`, { _id })) {
+      try {
+        await axios.delete(`https://trainexpress.herokuapp.com//passenger/${_id}`,
+          {
+            headers: {
+              "Authorization": `Bearer ${Uauth}`
+            }
+          }
+        );
+        navigate("/bookings")
+        toast.success("TicketCancelled", { autoClose: 2000 }, { position: toast.POSITION.TOP_RIGHT })
+      } catch (error) {
+        console.log(error.message);
+      }
+    }
+  };
+
   return (
     <>
       <Usernav />
@@ -64,39 +67,43 @@ export default function Bookings() {
         <table className="table">
           <thead >
             <tr>
-              <th>Booking Id</th>
+              <th>Username</th>
               <th>TrainName</th>
               <th>From</th>
               <th>D.Time</th>
               <th>To</th>
               <th>A.Time</th>
               <th>Routes</th>
-
-              <th>Passenger</th>
-
+              <th>Totalfare</th>
               <th colSpan={3}>PassengerName</th>
               <th colSpan={3}>PassengerAge</th>
-
+              <th>Status</th>
+              <th>CancelTicket</th>
 
             </tr>
           </thead>
           <tbody>
-            {myOrders.map((u, index) => {
+            {mybookings.map((u, index) => {
               return (
                 <tr key={index}>
-                  <td>{u._id}</td>
+                  <td>{u.username}</td>
                   <td>{u.traindata.trainname}</td>
                   <td>{u.traindata.from}</td>
                   <td>{u.traindata.arrivaltime}</td>
                   <td>{u.traindata.to}</td>
                   <td>{u.traindata.depaturetime}</td>
                   <td>{u.traindata.routes}</td>
+                  <td>{u.Totalfare}</td>
                   <td>{u.passengerdata.name1}</td>
                   <td>{u.passengerdata.name2}</td>
                   <td>{u.passengerdata.name3}</td>
                   <td>{u.passengerdata.age1}</td>
                   <td>{u.passengerdata.age2}</td>
                   <td>{u.passengerdata.age3}</td>
+                  <td>{u.traindata.status}</td>
+                  <td><button className='btn btn-danger btn-sm' style={{ textAlign: "center" }} onClick={() => cancelticket(u)}>
+                    <iconify-icon icon="ic:sharp-cancel"></iconify-icon>
+                  </button></td>
                 </tr>
               );
             })}

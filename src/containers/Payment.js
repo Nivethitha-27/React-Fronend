@@ -1,19 +1,20 @@
-import React from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-
-
+import React, { useEffect } from "react";
+import axios from 'axios'
+import { Link, useParams, useLocation, useNavigate } from 'react-router-dom'
+import { useState } from "react";
+import Usernav from "../components/Usernav";
 
 function Payment() {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
   return (
     <>
-    <div className='payment' style={{textAlign:"center",marginTop:"2%"}}>
-<img src='./images/17b21e2087e6b22a3bbc8fd3e137c918.gif'/>
-    </div>
-      {/* <h1>success</h1> */}
-<h2 style={{fontFamily:"Timesnewroman", fontSize:"30px",textAlign:"center",marginTop:"2%" ,color:"darkred"}}>Happy Journey!!!</h2>
-<h4 style={{fontFamily:"Timesnewroman" ,fontSize:"25px",textAlign:"center",marginTop:"1%" ,color:"deeppink"}}>Continue your Booking...</h4>
-      <button  className="btn btn-success btn-md btn-center "style ={{marginLeft:"44%", }}onClick={() => navigate("/search")}>Go To Home Page</button>
+      <Usernav />
+      <div className='payment' style={{ textAlign: "center" }}>
+        <img src="https://i.ibb.co/qFPpcPR/17b21e2087e6b22a3bbc8fd3e137c918.gif" alt="" border="0" />
+      </div>
+      <h2 style={{ fontFamily: "Timesnewroman", fontSize: "25px", textAlign: "center", color: "darkred" }}>Happy Journey!!!</h2>
+      <h4 style={{ fontFamily: "Timesnewroman", fontSize: "20px", textAlign: "center", color: "blue" }}>You can check your booking details in registered Email </h4>
+      <button className="btn btn-success btn-sm btn-center " style={{ marginLeft: "46%", }} onClick={() => navigate("/bookings")}>Your Bookings details</button>
     </>
   )
 }

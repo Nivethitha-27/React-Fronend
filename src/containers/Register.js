@@ -3,7 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-
+import { toast } from "react-toastify";
 import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
 import Api from '../Api'
@@ -47,17 +47,13 @@ export default function SignUpPage() {
                                         }}
                                         validationSchema={SignupSchema}
                                         onSubmit={async (values) => {
-                                            const form = {
-
-                                            };
-
                                             try {
-                                                const url = "https://trainexpress.herokuapp.com/register";
+                                                const url = "https://trainexpress.herokuapp.com//register";
                                                 const { data } = await axios.post(url, values);
                                                 navigate("/login");
-                                                alert("Registered Successfully");
+                                                toast.success("Registered Successfully", { autoClose: 2000 }, { position: toast.POSITION.TOP_CENTER });
                                             } catch ({ response: { data } }) {
-                                                alert("Wrong credential!");
+                                                toast.error("Wrong Credentials", { autoClose: 2000 })
                                             }
                                         }}
                                     >
@@ -136,22 +132,6 @@ export default function SignUpPage() {
                                                     </span>
                                                 ) : null}
 
-                                                {/* Confirm Password
-                                                <div className="mb-4">
-
-                                                    <label className="form-label" style={{ fontSize: 15, fontFamily: "monospace" }}>Confirm Password</label>
-                                                    <Field
-                                                        type="password"
-                                                        name="cPassword"
-                                                        placeholder="Confirm Password"
-                                                        className="form-control"
-                                                    />
-                                                </div>
-                                                {errors.cPassword && touched.cPassword ? (
-                                                    <span className="text-danger text-start">
-                                                        *{errors.cPassword}*
-                                                    </span>
-                                                ) : null} */}
                                                 <p style={{ fontSize: 15, fontFamily: "timesnewroman" }}>
                                                     Already a User?{" "}
                                                     <Link to="/login" >

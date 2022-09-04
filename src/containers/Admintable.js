@@ -3,9 +3,10 @@ import { Link, useNavigate } from "react-router-dom"
 import axios from 'axios'
 import Adminnav from '../components/Adminnav';
 import { useParams } from 'react-router-dom';
+import { toast } from "react-toastify";
 import Api from '../Api'
 function Admintable() {
-
+  const Aauth = window.localStorage.getItem('adminToken')
   const navigate = useNavigate();
   const [train, setTrain] = React.useState([]);
 
@@ -15,7 +16,14 @@ function Admintable() {
   // update  api call
   const edititem = async () => {
     try {
-      const { data } = await axios.put(`https://trainexpress.herokuapp.com/train/${id}`);
+      const { data } = await axios.put(`https://trainexpress.herokuapp.com//train/${id}`, data,
+        {
+          headers: {
+            "Authorization": `Bearer ${Aauth}`
+          }
+        }
+
+      );
       setitem(data);
     } catch (error) {
       console.log(error.message);
@@ -32,7 +40,13 @@ function Admintable() {
   //get trains 
   const getTrain = async () => {
     try {
-      const res = await axios.get("https://trainexpress.herokuapp.com/train/find");
+      const res = await axios.get("https://trainexpress.herokuapp.com//train/find",
+        {
+          headers: {
+            "Authorization": `Bearer ${Aauth}`
+          }
+        }
+      );
       setTrain(res.data);
     } catch (error) {
       console.log(error.message);
@@ -48,17 +62,20 @@ function Admintable() {
 
     if (window.confirm(`Are You Sure Delete This Train ${_id}`, { _id })) {
       try {
-        await axios.delete(`https://trainexpress.herokuapp.com/train/${_id}`);
-        alert("Deleted Successfully");
+        await axios.delete(`https://trainexpress.herokuapp.com//train/${_id}`,
+          {
+            headers: {
+              "Authorization": `Bearer ${Aauth}`
+            }
+          }
+        );
+        toast.success("TrainDeleted", { autoClose: 2000 }, { position: toast.POSITION.TOP_RIGHT })
         getTrain();
       } catch (error) {
         console.log(error.message);
       }
     }
   };
-
-
-
   return (
     <>
       <Adminnav />
@@ -71,6 +88,7 @@ function Admintable() {
               {/* <td>TrainId</td> */}
               <th>TrainNum</th>
               <th>TrainName</th>
+              <th>Date</th>
               <th>From</th>
               <th>To</th>
               <th>A.Time</th>
@@ -88,6 +106,7 @@ function Admintable() {
                   {/* <td>{data._id}</td> */}
                   <td>{data.trainnumber}</td>
                   <td>{data.trainname}</td>
+                  <td>{data.date}</td>
                   <td>{data.from}</td>
                   <td>{data.to}</td>
                   <td>{data.arrivaltime}</td>
@@ -96,7 +115,7 @@ function Admintable() {
                   <td>
 
                     <button className='btn btn-primary btn-sm' onClick={() => navigate("/trainupdate/edit/" + data._id)}>
-                    <iconify-icon icon="akar-icons:edit"></iconify-icon>
+                      <iconify-icon icon="akar-icons:edit"></iconify-icon>
                     </button>
 
                     <button className='btn btn-danger btn-sm' onClick={() => deletetrain(data)}>
