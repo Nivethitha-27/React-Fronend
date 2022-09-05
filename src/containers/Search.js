@@ -84,7 +84,7 @@ function Search() {
                                                         value={data.from}
                                                         name='from'>
                                                         <option selected>Choose</option>
-                                                        <option value="madurai">Madurai</option>
+                                                        <option value="Madurai">Madurai</option>
                                                         <option value="Mannargudi">Mannargudi</option>
                                                         <option value="ChennaiEgmore">ChennaiEgmore</option>
                                                         <option value="Sengottai">Sengottai</option>

@@ -38,12 +38,6 @@ function Travel({ traindata, Totalfare }) {
                     }]
                 }
             );
-            // if (res === 200) {
-            //     console.log("200");
-            // } else {
-            //     console.log("error");
-            // }
-            // console.log(res.data);
         } catch (err) {
             console.log(err);
         }
