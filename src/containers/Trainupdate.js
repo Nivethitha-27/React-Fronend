@@ -18,7 +18,7 @@ function Trainupdate() {
     // edit train api call
     const edittrain = async () => {
         try {
-            const { data } = await axios.get(`http://localhost:5000/train/find/${id}`,
+            const { data } = await axios.get(`https://trainexpress-node-akod.vercel.app/train/find/${id}`,
                 {
                     headers: {
                         "Authorization": `Bearer ${Aauth}`
@@ -87,7 +87,7 @@ export function EdittrainForm({ train }) {
             price: price,
             routes: routes,
         };
-        await axios.put(`http://localhost:5000/train/${train._id}`, updatetrain,
+        await axios.put(`https://trainexpress-node-akod.vercel.app/train/${train._id}`, updatetrain,
             {
                 headers: {
                     "Authorization": `Bearer ${Aauth}`

@@ -25,7 +25,7 @@ function Search() {
     // getting data
 
     useEffect(() => {
-        fetch("http://localhost:5000/train/find",
+        fetch("https://trainexpress-node-akod.vercel.app/train/find",
             {
                 headers: {
                     "Authorization": `Bearer ${Uauth}`
@@ -42,7 +42,7 @@ function Search() {
     const handlesubmit = async (e) => {
         e.preventDefault();
         try {
-            const url = `http://localhost:5000/train/find?from=${data.from}&to=${data.to}`
+            const url = `https://trainexpress-node-akod.vercel.app/train/find?from=${data.from}&to=${data.to}`
             const res = await axios.get(url,
                 {
                     headers: {

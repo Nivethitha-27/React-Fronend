@@ -18,7 +18,7 @@ export default function Bookings() {
   // get userById bookings
   const getUserById = async () => {
     try {
-      const { data } = await axios.get(`http://localhost:5000/passenger/userid/user`,
+      const { data } = await axios.get(`https://trainexpress-node-akod.vercel.app/passenger/userid/user`,
         {
           headers: {
             "Authorization": `Bearer ${Uauth}`
@@ -44,7 +44,7 @@ export default function Bookings() {
 
     if (window.confirm(`Are You Sure to Cancel Ticket ${_id}`, { _id })) {
       try {
-        await axios.delete(`https://trainexpress.herokuapp.com/passenger/${_id}`,
+        await axios.delete(`https://trainexpress-node-akod.vercel.app/passenger/${_id}`,
           {
             headers: {
               "Authorization": `Bearer ${Uauth}`

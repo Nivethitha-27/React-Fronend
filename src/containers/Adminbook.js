@@ -14,7 +14,7 @@ function Adminbook() {
   const [book, setbook] = React.useState([]);
   const getuser = async () => {
     try {
-      const { data } = await axios.get("http://localhost:5000/passenger/find",
+      const { data } = await axios.get("https://trainexpress-node-akod.vercel.app/passenger/find",
         {
           headers: {
             "Authorization": `Bearer ${Aauth}`

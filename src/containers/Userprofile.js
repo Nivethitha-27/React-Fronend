@@ -25,7 +25,7 @@ export default function Userprofile() {
   //get user details
   const getUserProfile = async () => {
     try {
-      const { data } = await axios.get("http://localhost:5000/user/id",
+      const { data } = await axios.get("https://trainexpress-node-akod.vercel.app/user/id",
         {
           headers: {
             "Authorization": `Bearer ${Uauth}`

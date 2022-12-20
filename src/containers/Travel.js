@@ -26,7 +26,7 @@ function Travel({ traindata, Totalfare }) {
     const makeRequest = async () => {
         try {
             const res = await axios.post(
-                "http://localhost:5000/payment",
+                "https://trainexpress-node-akod.vercel.app/payment",
                 {
                     headers: [{
                         "Authorization": `Bearer ${Uauth}`
@@ -74,14 +74,14 @@ function Travel({ traindata, Totalfare }) {
         const passengerdata = formValues
         try {
             // api call
-            const { data } = await axios.post("https://trainexpress.herokuapp.com/passenger", { passengerdata, traindata, Totalfare, email },
+            const { data } = await axios.post("https://trainexpress-node-akod.vercel.app/passenger", { passengerdata, traindata, Totalfare, email },
                 {
                     headers: {
                         "Authorization": `Bearer ${Uauth}`
                     }
                 });
          // mail 
-            const res = await axios.post("https://trainexpress.herokuapp.com/passenger/mail",
+            const res = await axios.post("https://trainexpress-node-akod.vercel.app/passenger/mail",
                 {
                     email: data.email,
                     TrainName: data.traindata.trainname,

@@ -10,7 +10,7 @@ const Newpassword = () => {
     console.log(token)
     const PostData = async () => {
         try {
-            await axios.post("http://localhost:5000/new-password", {
+            await axios.post("https://trainexpress-node-akod.vercel.app/new-password", {
                 password,
                 token
             })

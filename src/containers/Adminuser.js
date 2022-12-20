@@ -12,7 +12,7 @@ function Adminuser() {
 
     const getuser = async () => {
         try {
-            const { data } = await axios.get("http://localhost:5000/user/find",
+            const { data } = await axios.get("https://trainexpress-node-akod.vercel.app/user/find",
                 {
                     headers: {
                         "Authorization": `Bearer ${Aauth}`
@@ -34,7 +34,7 @@ function Adminuser() {
 
         if (window.confirm(`Are You Sure Delete This User ${_id}`, { _id })) {
           try {
-            await axios.delete(`https://trainexpress.herokuapp.com//user/${_id}`,
+            await axios.delete(`https://trainexpress-node-akod.vercel.app/user/${_id}`,
               {
                 headers: {
                   "Authorization": `Bearer ${Aauth}`

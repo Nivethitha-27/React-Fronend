@@ -32,7 +32,7 @@ function Log() {
                     onSubmit={async (values) => {
 
                         try {
-                            const url = "http://localhost:5000/login"
+                            const url = "https://trainexpress-node-akod.vercel.app/login"
                             const { data } = await axios.post(url, values);
 
                             window.localStorage.setItem("accessToken", data);

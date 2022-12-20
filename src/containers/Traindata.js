@@ -28,7 +28,7 @@ function Traindata() {
 
         const getdetail = async () => {
             try {
-                const res = await axios.get(`http://localhost:5000/train/find/` + path,
+                const res = await axios.get(`https://trainexpress-node-akod.vercel.app/train/find/` + path,
                     {
                         headers: {
                             "Authorization": `Bearer ${Uauth}`
