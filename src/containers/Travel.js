@@ -26,7 +26,7 @@ function Travel({ traindata, Totalfare }) {
     const makeRequest = async () => {
         try {
             const res = await axios.post(
-                "https://trainexpress.herokuapp.com/payment",
+                "http://localhost:5000/payment",
                 {
                     headers: [{
                         "Authorization": `Bearer ${Uauth}`

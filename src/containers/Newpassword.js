@@ -10,7 +10,7 @@ const Newpassword = () => {
     console.log(token)
     const PostData = async () => {
         try {
-            await axios.post("https://trainexpress.herokuapp.com/new-password", {
+            await axios.post("http://localhost:5000/new-password", {
                 password,
                 token
             })

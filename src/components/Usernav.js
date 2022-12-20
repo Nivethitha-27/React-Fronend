@@ -27,20 +27,20 @@ function Usernav() {
                         <ul className="nav justify-content-end">
                             <li className="nav-item"  >
 
-                                <Link to="/userprofile" style={{ textDecoration: 'none', color: "deeppink" }}>
+                                <Link to="/userprofile" style={{ textDecoration: 'none', color: "blue" }}>
                                     {email}
 
                                 </Link>
                             </li>
 
                             <li className="nav-item">
-                                <Link to="/bookings" style={{ textDecoration: 'none', color: "deeppink" }}>
+                                <Link to="/bookings" style={{ textDecoration: 'none', color: "blue" }}>
                                     Bookings
                                 </Link>
                             </li>
-                            <li className="nav-item"> <Link to="/" style={{ textDecoration: 'none', color: "deeppink" }} onClick={Logout}>
+                            <li className="nav-item"> <Link to="/" style={{ textDecoration: 'none', color: "blue" }} onClick={Logout}>
                                 Logout
-                                <iconify-icon icon="ri:logout-circle-line" style={{ color: "red", rotate: "90deg", }}>
+                                <iconify-icon icon="ri:logout-circle-line" style={{ color: "blue", rotate: "90deg", }}>
                                 </iconify-icon></Link>
                             </li>
                         </ul>

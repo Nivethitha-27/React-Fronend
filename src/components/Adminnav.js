@@ -25,21 +25,21 @@ function Adminnav() {
                         <ul className="nav justify-content-end" >
 
                             <li className="nav-item">
-                                <Link to="/admintable" style={{ textDecoration: 'none', color: "deeppink"  }}>TrainDetails</Link>
+                                <Link to="/admintable" style={{ textDecoration: 'none', color: "blue"  }}>TrainDetails</Link>
                                 <br></br></li>
                                 
                             <li className="nav-item">
-                                <Link to="/adminbook" style={{ textDecoration: 'none', color: "deeppink"   }}>Booking</Link></li>
+                                <Link to="/adminbook" style={{ textDecoration: 'none', color: "blue"   }}>Booking</Link></li>
                               
                             <li className="nav-item">
-                                <Link to="/adminuser" style={{ textDecoration: 'none', color: "deeppink"  }}>Userdetails</Link></li>
+                                <Link to="/adminuser" style={{ textDecoration: 'none', color: "blue"  }}>Userdetails</Link></li>
                                 
                             <li className="nav-item">
-                                <Link to="/adminform" style={{ textDecoration: 'none', color: "deeppink"  }} >AddingTrains</Link>
+                                <Link to="/adminform" style={{ textDecoration: 'none', color: "blue"  }} >AddingTrains</Link>
                             </li>
-                            <li className="nav-item"> <Link to="/" style={{ textDecoration: 'none', color: "deeppink" }} onClick={Logout}>
+                            <li className="nav-item"> <Link to="/" style={{ textDecoration: 'none', color: "blue" }} onClick={Logout}>
                                
-                                <iconify-icon icon="ri:logout-circle-line" style={{ color: "red", rotate: "90deg",marginTop:"5%" }}>
+                                <iconify-icon icon="ri:logout-circle-line" style={{ color: "blue", rotate: "90deg",marginTop:"5%" }}>
                                 </iconify-icon></Link>
                             </li>
                         </ul>

@@ -16,7 +16,7 @@ function Admintable() {
   // update  api call
   const edititem = async () => {
     try {
-      const { data } = await axios.put(`https://trainexpress.herokuapp.com//train/${id}`, data,
+      const { data } = await axios.put(`http://localhost:5000/train/${id}`, data,
         {
           headers: {
             "Authorization": `Bearer ${Aauth}`
@@ -40,7 +40,7 @@ function Admintable() {
   //get trains 
   const getTrain = async () => {
     try {
-      const res = await axios.get("https://trainexpress.herokuapp.com/train/find",
+      const res = await axios.get("http://localhost:5000/train/find",
         {
           headers: {
             "Authorization": `Bearer ${Aauth}`
@@ -62,7 +62,7 @@ function Admintable() {
 
     if (window.confirm(`Are You Sure Delete This Train ${_id}`, { _id })) {
       try {
-        await axios.delete(`https://trainexpress.herokuapp.com/train/${_id}`,
+        await axios.delete(`http://localhost:5000/train/${_id}`,
           {
             headers: {
               "Authorization": `Bearer ${Aauth}`

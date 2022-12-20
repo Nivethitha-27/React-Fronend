@@ -14,7 +14,7 @@ function Adminbook() {
   const [book, setbook] = React.useState([]);
   const getuser = async () => {
     try {
-      const { data } = await axios.get("https://trainexpress.herokuapp.com/passenger/find",
+      const { data } = await axios.get("http://localhost:5000/passenger/find",
         {
           headers: {
             "Authorization": `Bearer ${Aauth}`

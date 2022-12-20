@@ -30,7 +30,7 @@ function Admin() {
     const handlesubmit = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.post("https://trainexpress.herokuapp.com/train", train,
+            const res = await axios.post("http://localhost:5000/train", train,
                 {
                     headers: {
                         "Authorization": `Bearer ${Aauth}`

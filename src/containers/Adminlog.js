@@ -8,7 +8,7 @@ import Adminlogo from "../components/Adminlogo";
 
 // Admin Login Page
 export default function Adminlog() {
-   
+
     // navigate to page
     const navigate = useNavigate();
 
@@ -20,7 +20,7 @@ export default function Adminlog() {
 
     return (
         <>
-         <Adminlogo />
+            <Adminlogo />
             <div className="container">
                 <Formik
                     initialValues={{
@@ -31,9 +31,9 @@ export default function Adminlog() {
                     onSubmit={async (values) => {
                         try {
                             // api call
-                            const { data } = await axios.post("https://trainexpress.herokuapp.com/admin/login", values);
+                            const { data } = await axios.post("http://localhost:5000/admin/login", values);
                             // set admin authToken for local storage
-                            window.localStorage.setItem("adminToken",data);
+                            window.localStorage.setItem("adminToken", data);
                             // navigate to admin home page
                             navigate("/admintable");
                             // success message

@@ -18,7 +18,7 @@ export default function Bookings() {
   // get userById bookings
   const getUserById = async () => {
     try {
-      const { data } = await axios.get(`https://trainexpress.herokuapp.com/passenger/userid/user`,
+      const { data } = await axios.get(`http://localhost:5000/passenger/userid/user`,
         {
           headers: {
             "Authorization": `Bearer ${Uauth}`

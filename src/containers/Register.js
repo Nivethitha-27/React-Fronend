@@ -48,7 +48,7 @@ export default function SignUpPage() {
                                         validationSchema={SignupSchema}
                                         onSubmit={async (values) => {
                                             try {
-                                                const url = "https://trainexpress.herokuapp.com/register";
+                                                const url = "http://localhost:5000/register";
                                                 const { data } = await axios.post(url, values);
                                                 navigate("/login");
                                                 toast.success("Registered Successfully", { autoClose: 2000 }, { position: toast.POSITION.TOP_CENTER });
